@@ -11,13 +11,19 @@ class ResortScrapping
   def getDataFromPage
     @url = "https://www.abritel.fr/results/rhone-alpes/champagny-en-vanoise/region:66612899/arrival:2017-12-16/departure:2017-12-23/minSleeps/1"
     @page = Nokogiri::HTML(open(@url))
-    xpath1 = '//h3[@class="hit-headline"]'
+    xpath_name = '//h3[@class="hit-headline"]'
+    xpath_url = '//h3[@class="hit-headline"]/a'
 
-    elements = page.xpath(xpath1)
+    names = page.xpath(xpath_name)
+    urls = page.xpath(xpath_url)
 
-    elements.each do |element|
-      puts element.text
+    names.each do |n|
+      puts n.text
       # puts element['href']
+    end
+
+    urls.each do |u|
+      puts u.text
     end
 
     # puts elements.length
