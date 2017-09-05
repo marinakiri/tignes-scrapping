@@ -6,6 +6,7 @@ class ResortScrapping
     p "hello world !"
     # bob = Classified.new
     # bob.save
+    getDataFromPage
   end
 
   def getDataFromPage
@@ -13,21 +14,31 @@ class ResortScrapping
     @page = Nokogiri::HTML(open(@url))
     xpath_name = '//h3[@class="hit-headline"]'
     xpath_url = '//h3[@class="hit-headline"]/a'
+    xpath_prices = '//div[@class="rate"]'
+    xpath_rates = "//div[@class='price-overlay']"
 
     names = page.xpath(xpath_name)
     urls = page.xpath(xpath_url)
+    prices = page.xpath(xpath_prices)
+    # prices does return an empty array for now, several unsucessful attempts, next step try using a regex and collect of bigger split of raw html
 
     names.each do |n|
-      puts n.text
+      puts n.text.slice(14..-10)
       # puts element['href']
     end
 
     urls.each do |u|
-      puts u.text
+      puts u["href"]
+    end
+
+    prices.each do |pr|
+      puts pr.text
     end
 
     # puts elements.length
     binding.pry
+
+
 
 
   end
