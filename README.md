@@ -13,3 +13,8 @@ Il s'agit pour nous de développer un outil d'automatisation pour scrapper les p
 Ce projet est un MVP et nous avons beaucoup d'idées pour le développer (sur d'autres niches, secteur B2B, proposer d'autres services...)
 
 Nous serons accompagnés par deux mentors : JB qui est dev chez Botify, et Vincent, un pote d'Isa qui pèse en Ruby.
+
+-- To-do lists !! --
+
+@marinakiri
+- N'oublie de déplacer l'import de boostrap dans les fichiers scss : sinon quand tu vas rajouter des règles elles seront ecrasées par celles de bootstrap qui arrivent après !!
