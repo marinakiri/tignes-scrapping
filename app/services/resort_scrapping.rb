@@ -1,4 +1,4 @@
-class BookingApi
+class ResortScrapping
   def initialize
     p "hello world !"
     # bob = Classified.new
