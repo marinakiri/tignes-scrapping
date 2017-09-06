@@ -7,9 +7,9 @@ class ResortScrapping
     # bob = Classified.new
     # bob.save
     @start_date = Date.new
-    # getDataFromPage
+    getDataFromPage
     # changeDate
-    changePage
+    # changePage
   end
 
   def changeResort
@@ -50,7 +50,7 @@ class ResortScrapping
 
   def getDataFromPage
     
-    @url = "https://www.abritel.fr/results/rhone-alpes/champagny-en-vanoise/region:66612899/arrival:2017-12-16/departure:2017-12-23/minSleeps/1"
+    @url = "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1?view=l&_=1504709646945"
     @page = Nokogiri::HTML(open(@url))
 
     xpath_name = '//h3[@class="hit-headline"]'
@@ -58,26 +58,53 @@ class ResortScrapping
     xpath_prices = "//div[@class='rate']/a"
     xpath_guests = '//li[@class="accommodation accommodation--simple bbs-sleeps"]/div[@class="bd-bth-slps-count"]'
 
-    #For location use of regex :
-    # reg = /"geography":{"name":(.*)"location"/
-    # reg = /^geography(.*)location$/
-    # reg = /\A"geography".*France","location"\Z/
-    # reg = /\Ageography.*France\Z/
-    # reg = /geography.*France/
+    # Old scrapping method
 
-    names = page.xpath(xpath_name)
-    urls = page.xpath(xpath_url)
-    prices = page.xpath(xpath_prices)
-    guests = page.xpath(xpath_guests)
+    # #For location use of regex :
+    # # reg = /"geography":{"name":(.*)"location"/
+    # # reg = /^geography(.*)location$/
+    # # reg = /\A"geography".*France","location"\Z/
+    # # reg = /\Ageography.*France\Z/
+    # # reg = /geography.*France/
 
-    names.length.times do |i|
-      Classified.create(startDate:@start_date,
+    # names = page.xpath(xpath_name)
+    # urls = page.xpath(xpath_url)
+    # prices = page.xpath(xpath_prices)
+    # guests = page.xpath(xpath_guests)
+
+    results_json = JSON.parse(page.text)
+    search_results = results_json["results"]["hits"]
+
+    search_results.each do |r|
+
+      Classified.create(
+        startDate:@start_date,
         endDate:@start_date+7,
-        title:names[i-1].text.slice(14..-10),
-        price:prices[i-1].text.slice(0..-3).to_f,
-        link:urls[i-1]["href"],
-        numberOfGuests:guests[i-1].text.to_i)
+        title:r["headline"],
+        price:r["averagePrice"]["value"],
+        link:r["detailPageUrl"],
+        numberOfGuests:r["sleeps"].to_i
+        )
     end
+
+    search_results[0]["sleeps"]
+
+    # binding.pry
+
+    # File.open("page_scrapping.json","w") do |f|
+    #   f.write(results_json.to_json)
+    # end
+
+
+
+    # names.length.times do |i|
+    #   Classified.create(startDate:@start_date,
+    #     endDate:@start_date+7,
+    #     title:names[i-1].text.slice(14..-10),
+    #     price:prices[i-1].text.slice(0..-3).to_f,
+    #     link:urls[i-1]["href"],
+    #     numberOfGuests:guests[i-1].text.to_i)
+    # end
     
   end 
 
