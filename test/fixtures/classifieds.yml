@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startDate: 2017-09-05
+  endDate: 2017-09-05
+  price: 1.5
+  title: MyString
+  link: MyString
+  numberOfGuests: 1
+
+two:
+  startDate: 2017-09-05
+  endDate: 2017-09-05
+  price: 1.5
+  title: MyString
+  link: MyString
+  numberOfGuests: 1
