@@ -1,12 +1,36 @@
 class ResortScrapping
 
-  attr_accessor :url, :page
+  attr_accessor :url, :url_dates, :page
 
   def initialize
     p "hello world !"
     # bob = Classified.new
     # bob.save
-    getDataFromPage
+    # getDataFromPage
+    changeDate
+  end
+
+  def changeResort
+  end
+ 
+  def changeDate
+    season_start = Date.new(2017,12,9)
+    season_end = Date.new(2018,5,5)
+    number_of_weeks = (season_end-season_start)/7
+    number_of_weeks = number_of_weeks.to_i
+    start_date = Date.new
+
+    number_of_weeks.times do |i|
+      #change url
+      start_date = season_start + (i-1)*7
+      @url_dates = "arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
+      changePage
+    end
+
+  end
+  
+  def changePage
+    puts @url_dates
   end
 
   def getDataFromPage
@@ -14,8 +38,8 @@ class ResortScrapping
     @page = Nokogiri::HTML(open(@url))
     xpath_name = '//h3[@class="hit-headline"]'
     xpath_url = '//h3[@class="hit-headline"]/a'
-    xpath_prices = '//div[@class="rate"]'
-    xpath_rates = "//div[@class='price-overlay']"
+    # xpath_prices = '//div[@class="rate"]'
+    xpath_prices = "//div[@class='rate']/a"
 
     names = page.xpath(xpath_name)
     urls = page.xpath(xpath_url)
@@ -32,41 +56,15 @@ class ResortScrapping
     end
 
     prices.each do |pr|
-      puts pr.text
+      puts pr.text.slice(0..-3).to_f
     end
 
     # puts elements.length
     binding.pry
+  end 
 
-
-
-
-  end
-
-  def test
-    @url = "http://ruby.bastardsbook.com/files/hello-webpage.html"
-
-    #Selection with xpath
-    puts "Selecting with xpath"
-    #'//*[@id="references"]/p[3]/a'
-
-    @page = Nokogiri::HTML(open(@url))
-    xpath1 = '//*[@id="references"]/p[3]/a'
-
-    elements = page.xpath(xpath1)
-
-    elements.each do |element|
-      puts element.text
-      puts element['href']
-    end
-
-    #Selection with xpath
-    puts ""
-    puts "Now selecting with css"
-    links = page.css('div#references a')
-
-    links.each do |link|
-      puts "For #{link.text} go to -> #{link['href']}"
+end
+to -> #{link['href']}"
     end
   end
 
