@@ -1,3 +1,4 @@
+
 class ListingResorts
   attr_accessor :url, :page
 
@@ -5,24 +6,27 @@ class ListingResorts
     p "hello world !"
     # bob = Classified.new
     # bob.save
+    getDataFromPage
   end
-
+  
   def getDataFromPage
     @url = "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes"
     @page = Nokogiri::HTML(open(@url))
-    csspath1 = 'table.table.table-condensed ul li a'
     
-    elements = page.css(csspath1)
-
+    xpath_name = '//ul[@class="chevron"]/li/a'    
+    xpath_url = '//ul[@class="chevron"]/li/a/href'
+    
+    #take name
+    elements = page.xpath(xpath_name)
+    
     elements.each do |element|
-      puts element.text
-      puts element['href']
+      resort = Resort.new
+      resort.name = element.text
+      # resort.url = element.values.first 
+      resort.save
     end
 
-    # puts elements.length
     binding.pry
-
-
   end
 
   def test

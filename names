@@ -1,0 +1,28 @@
+
+[1mFrom:[0m /home/hong/git-example/final_project/tignes-scrapping/app/services/listing_resorts.rb @ line 34 ListingResorts#getDataFromPage:
+
+    [1;34m12[0m: [32mdef[0m [1;34mgetDataFromPage[0m
+    [1;34m13[0m:   @url = [31m[1;31m"[0m[31mhttps://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes[1;31m"[0m[31m[0m
+    [1;34m14[0m:   @page = [1;34;4mNokogiri[0m::HTML(open(@url))
+    [1;34m15[0m: 
+    [1;34m16[0m:   xpath_name = [31m[1;31m'[0m[31m//ul[@class="chevron"]/li/a[1;31m'[0m[31m[0m    
+    [1;34m17[0m:   xpath_url = [31m[1;31m'[0m[31m//ul[@class="chevron"]/li/a/href[1;31m'[0m[31m[0m
+    [1;34m18[0m:   
+    [1;34m19[0m:   [1;34m#take name[0m
+    [1;34m20[0m:   names = page.xpath(xpath_name)
+    [1;34m21[0m:   
+    [1;34m22[0m:   names.each [32mdo[0m |name|
+    [1;34m23[0m:     resort = [1;34;4mResort[0m.new
+    [1;34m24[0m:     resort.name = name.text 
+    [1;34m25[0m:   [32mend[0m
+    [1;34m26[0m: 
+    [1;34m27[0m:   [1;34m#take url[0m
+    [1;34m28[0m:   urls = page.xpath(xpath_url)
+    [1;34m29[0m:   urls.each [32mdo[0m |url|
+    [1;34m30[0m: 
+    [1;34m31[0m:     resort.url = url.value
+    [1;34m32[0m:   [1;34m# puts elements.length[0m
+    [1;34m33[0m:   [32mend[0m
+ => [1;34m34[0m:   binding.pry
+    [1;34m35[0m: [32mend[0m
+
