@@ -65,6 +65,12 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    devise (4.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.2)
+      responders
+      warden (~> 1.2.3)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.1)
@@ -284,13 +290,12 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     ntlm-http (0.1.1)
+    orm_adapter (0.5.0)
     pg (0.18.4)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rails (0.3.6)
-      pry (>= 0.10.4)
     puma (3.9.1)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -331,6 +336,9 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     ruby-progressbar (1.8.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -372,6 +380,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -394,6 +404,7 @@ DEPENDENCIES
   byebug (= 9.0.6)
   carrierwave (= 1.1.0)
   coffee-rails (= 4.2.2)
+  devise
   dotenv
   faker (= 1.7.3)
   fog (= 1.40.0)
@@ -407,7 +418,6 @@ DEPENDENCIES
   mini_magick (= 4.7.0)
   minitest-reporters (= 1.1.14)
   pg (= 0.18.4)
-  pry-rails
   puma (= 3.9.1)
   rails (= 5.1.2)
   rails-controller-testing (= 1.0.2)
