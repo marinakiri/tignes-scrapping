@@ -1,9 +1,9 @@
 class ResortScrapping
 
-  attr_accessor :url, :url_fix_first, :url_fix_second, :url_dates, :url_pages, :start_date
+  attr_accessor :url, :url_fix_first, :url_fix_second, :url_dates, :url_region, :url_pages, :start_date, :double
 
   def initialize
-    p "hello world !"
+    p "Let's scrap the classifieds!"
     # bob = Classified.new
     # bob.save
     @start_date = Date.new
@@ -14,12 +14,13 @@ class ResortScrapping
     @url_fix_second = "/@,,,,z"
     @url_pages = "/page:1"
 
-    puts build_url
-    puts "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1"
-    puts build_url == "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1"
-    
-    changeDate
+    @double = 0
+
+    build_url
+     
+    changeResort
     # getDataFromPage
+    puts "number of duplicates avoided: #{@double}"
     
   end
 
@@ -29,11 +30,18 @@ class ResortScrapping
 
   def changeResort
 
+    region_id_list = Resort.pluck(:region_number)
+    
+    region_id_list[4..6].each do |region_id| #Adding the [0..3] to limit the number of tests
+     @url_region = "/region:#{region_id}"
+     puts "*Scrapping for region #{region_id}*"
+     changeDate
+   end
   end
  
   def changeDate
     season_start = Date.new(2017,12,9)
-    season_end = Date.new(2018,2,17)
+    season_end = Date.new(2018,1,1) #Here change the season end to increase tests
     number_of_weeks = (season_end-season_start)/7
     number_of_weeks = number_of_weeks.to_i
 
@@ -41,6 +49,7 @@ class ResortScrapping
       #change url
       @start_date = season_start + (i-1)*7
       @url_dates = "arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
+      puts "***Scrapping for starting date #{@start_date}***"
       changePage
     end
 
@@ -52,9 +61,10 @@ class ResortScrapping
     page = HTTParty.get(@url)
     current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
 
-    current_number_of_pages = 2 #just to test with fewer pages
+    current_number_of_pages = 1 #just to test with fewer pages
 
     current_number_of_pages.times do |i|
+      puts "*****Scrapping page number #{i+1} of week starting #{@start_date}*****"
         @url_pages = "/page:#{i+1}"
         build_url
         getDataFromPage
@@ -72,14 +82,21 @@ class ResortScrapping
 
     search_results.each do |r|
       if (r["averagePrice"]!=nil && r["headline"]!=nil && r["detailPageUrl"]!=nil) 
-      Classified.create(
-        startDate:@start_date,
-        endDate:@start_date+7,
-        title:r["headline"],
-        price:r["averagePrice"]["value"],
-        link:r["detailPageUrl"],
-        numberOfGuests:r["sleeps"].to_i
-        )
+        if (Classified.find_by_abritel_classified_id(r["listingId"]) == nil || Classified.find_by_abritel_classified_id(r["listingId"]).start_date != @start_date)
+          Classified.create(
+            start_date:@start_date,
+            end_date:@start_date+7,
+            title:r["headline"],
+            price:r["averagePrice"]["value"],
+            link:r["detailPageUrl"],
+            number_of_guests:r["sleeps"].to_i,
+            abritel_id:r["listingNumber"].to_i,
+            abritel_classified_id:r["listingId"]
+            )
+        else
+          @double += 1
+          puts "!!! already in database !!!"
+        end
       end
     end
   end 
