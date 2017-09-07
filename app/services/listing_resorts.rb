@@ -20,10 +20,10 @@ class ListingResorts
     elements = page.xpath(xpath_name)
     
     elements.each do |element|
-      resort = Resort.new
-      resort.name = element.text
-      # resort.url = element.values.first 
-      resort.save
+      Resort.create(
+      name:element.text
+      resp = element.values.first 
+      url: resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1])
     end
 
     binding.pry
