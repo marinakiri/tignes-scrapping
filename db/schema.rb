@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170905151957) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "classifieds", force: :cascade do |t|
     t.date "startDate"
     t.date "endDate"
