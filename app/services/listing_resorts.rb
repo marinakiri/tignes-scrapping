@@ -1,59 +1,36 @@
 
 class ListingResorts
-  attr_accessor :url, :page
+  attr_accessor :region_hash
 
   def initialize
     p "hello world !"
-    # bob = Classified.new
-    # bob.save
-    getDataFromPage
+    @region_hash = {}
+    get_regions_of_resorts
   end
   
-  def getDataFromPage
-    @url = "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes"
-    @page = Nokogiri::HTML(open(@url))
+  def get_regions_of_resorts
     
-    xpath_name = '//ul[@class="chevron"]/li/a'    
-    xpath_url = '//ul[@class="chevron"]/li/a/href'
-    
-    #take name
-    elements = page.xpath(xpath_name)
-    
-    elements.each do |element|
-      Resort.create(
-      name:element.text
-      resp = element.values.first 
-      url: resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1])
+    region_links=[]
+    urls = ["https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes",
+      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-pyrenees",
+      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-massif-central",
+      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-vosges-jura"]
+    urls.each do |url|
+      resp = HTTParty.get(url); nil
+      region_links << resp.split("\n").grep(/<li><a href="\/annonces\/location-vacances\/.*php/).map{|href| href.split("\"")[1]}
     end
-
     binding.pry
-  end
-
-  def test
-    @url = "http://ruby.bastardsbook.com/files/hello-webpage.html"
-
-    #Selection with xpath
-    puts "Selecting with xpath"
-    #'//*[@id="references"]/p[3]/a'
-
-    @page = Nokogiri::HTML(open(@url))
-    xpath1 = '//*[@id="references"]/p[3]/a'
-
-    elements = page.xpath(xpath1)
-
-    elements.each do |element|
-      puts element.text
-      puts element['href']
+    region_links.each do |region_link|
+      get_regions_from_links(region_link.to_s)
     end
 
-    #Selection with xpath
-    puts ""
-    puts "Now selecting with css"
-    links = page.css('div#references a')
-
-    links.each do |link|
-      puts "For #{link.text} go to -> #{link['href']}"
-    end
+    puts @region_hash
   end
+
+  def get_regions_from_links(link)
+    resp = HTTParty.get(link);
+    @region_hash[link]=resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1]
+  end
+
 
 end
