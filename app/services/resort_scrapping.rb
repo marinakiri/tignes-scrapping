@@ -1,27 +1,41 @@
 class ResortScrapping
 
-  attr_accessor :url, :url_dates, :url_pages, :page, :start_date
+  attr_accessor :url, :url_fix_first, :url_fix_second, :url_dates, :url_pages, :start_date
 
   def initialize
     p "hello world !"
     # bob = Classified.new
     # bob.save
     @start_date = Date.new
-    getDataFromPage
-    # changeDate
-    # changePage
+
+    @url_fix_first = "https://www.abritel.fr/ajax/map/results/refined"
+    @url_region = "/region:66612960"
+    @url_dates = "/arrival:2017-12-16/departure:2017-12-23"
+    @url_fix_second = "/@,,,,z"
+    @url_pages = "/page:1"
+
+    puts build_url
+    puts "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1"
+    puts build_url == "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1"
+    
+    changeDate
+    # getDataFromPage
+    
+  end
+
+  def build_url
+    @url = @url_fix_first + @url_region + @url_dates + @url_fix_second + @url_pages
   end
 
   def changeResort
+
   end
  
   def changeDate
     season_start = Date.new(2017,12,9)
-    season_end = Date.new(2018,5,5)
+    season_end = Date.new(2018,2,17)
     number_of_weeks = (season_end-season_start)/7
     number_of_weeks = number_of_weeks.to_i
-    
-    binding.pry
 
     number_of_weeks.times do |i|
       #change url
@@ -33,52 +47,29 @@ class ResortScrapping
   end
   
   def changePage
-    puts @url_dates
-    @url_pages=""
-    # getDataFromPage
-    differentPages = true
-    counter = 2
-    # while differentPages 
 
-    # end 
-    binding.pry
-    local_old_url = "https://www.abritel.fr/annonces/location-vacances/france_provence-alpes-cote%20d%27azur_4_le%20sauze_dt0.php/"
-    new_page = Nokogiri::HTML(open(local_old_url))
-    puts new_page.base_uri.to_s
+    #Getting the total number of pages to scrap
+    page = HTTParty.get(@url)
+    current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
+
+    current_number_of_pages = 2 #just to test with fewer pages
+
+    current_number_of_pages.times do |i|
+        @url_pages = "/page:#{i+1}"
+        build_url
+        getDataFromPage
+    end
 
   end
 
   def getDataFromPage
     
-    @url = "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1?view=l&_=1504709646945"
-    # @page = Nokogiri::HTML(open(@url))
-
-    @page = HTTParty.get(@url)
-
-    xpath_name = '//h3[@class="hit-headline"]'
-    xpath_url = '//h3[@class="hit-headline"]/a'
-    xpath_prices = "//div[@class='rate']/a"
-    xpath_guests = '//li[@class="accommodation accommodation--simple bbs-sleeps"]/div[@class="bd-bth-slps-count"]'
-
-    # Old scrapping method
-
-    # #For location use of regex :
-    # # reg = /"geography":{"name":(.*)"location"/
-    # # reg = /^geography(.*)location$/
-    # # reg = /\A"geography".*France","location"\Z/
-    # # reg = /\Ageography.*France\Z/
-    # # reg = /geography.*France/
-
-    # names = page.xpath(xpath_name)
-    # urls = page.xpath(xpath_url)
-    # prices = page.xpath(xpath_prices)
-    # guests = page.xpath(xpath_guests)
+    page = HTTParty.get(@url)
 
     results_json = JSON.parse(page.body)
     search_results = results_json["results"]["hits"]
 
     search_results.each do |r|
-
       Classified.create(
         startDate:@start_date,
         endDate:@start_date+7,
@@ -88,25 +79,6 @@ class ResortScrapping
         numberOfGuests:r["sleeps"].to_i
         )
     end
-
-    # search_results[0]["sleeps"]
-
-    # binding.pry
-
-    # File.open("page_scrapping.json","w") do |f|
-    #   f.write(results_json.to_json)
-    # end
-
-
-
-    # names.length.times do |i|
-    #   Classified.create(startDate:@start_date,
-    #     endDate:@start_date+7,
-    #     title:names[i-1].text.slice(14..-10),
-    #     price:prices[i-1].text.slice(0..-3).to_f,
-    #     link:urls[i-1]["href"],
-    #     numberOfGuests:guests[i-1].text.to_i)
-    # end
     
   end 
 
