@@ -65,11 +65,13 @@ class ResortScrapping
   def getDataFromPage
     
     page = HTTParty.get(@url)
-
+    puts @url
+    sleep(3)
     results_json = JSON.parse(page.body)
     search_results = results_json["results"]["hits"]
 
     search_results.each do |r|
+      if (r["averagePrice"]!=nil && r["headline"]!=nil && r["detailPageUrl"]!=nil) 
       Classified.create(
         startDate:@start_date,
         endDate:@start_date+7,
@@ -78,8 +80,8 @@ class ResortScrapping
         link:r["detailPageUrl"],
         numberOfGuests:r["sleeps"].to_i
         )
+      end
     end
-    
   end 
 
 end
