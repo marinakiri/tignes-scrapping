@@ -51,7 +51,9 @@ class ResortScrapping
   def getDataFromPage
     
     @url = "https://www.abritel.fr/ajax/map/results/refined/region:66612960/arrival:2017-12-16/departure:2017-12-23/@,,,,z/page:1?view=l&_=1504709646945"
-    @page = Nokogiri::HTML(open(@url))
+    # @page = Nokogiri::HTML(open(@url))
+
+    @page = HTTParty.get(@url)
 
     xpath_name = '//h3[@class="hit-headline"]'
     xpath_url = '//h3[@class="hit-headline"]/a'
@@ -72,7 +74,7 @@ class ResortScrapping
     # prices = page.xpath(xpath_prices)
     # guests = page.xpath(xpath_guests)
 
-    results_json = JSON.parse(page.text)
+    results_json = JSON.parse(page.body)
     search_results = results_json["results"]["hits"]
 
     search_results.each do |r|
@@ -87,7 +89,7 @@ class ResortScrapping
         )
     end
 
-    search_results[0]["sleeps"]
+    # search_results[0]["sleeps"]
 
     # binding.pry
 
