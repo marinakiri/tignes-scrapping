@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905151957) do
+ActiveRecord::Schema.define(version: 20170906181316) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "classifieds", force: :cascade do |t|
-    t.date "startDate"
-    t.date "endDate"
-    t.string "title"
-    t.float "price"
-    t.integer "numberOfGuests"
-    t.string "link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "classifieds" because of following StandardError
+#   Unknown type 'jsonb' for column 'json_data'
 
   create_table "resorts", force: :cascade do |t|
     t.string "name"
