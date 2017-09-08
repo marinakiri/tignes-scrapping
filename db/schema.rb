@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907225429) do
+ActiveRecord::Schema.define(version: 20170908123717) do
 
 # Could not dump table "classifieds" because of following StandardError
 #   Unknown type 'jsonb' for column 'json_data'
