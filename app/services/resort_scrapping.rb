@@ -34,6 +34,7 @@ class ResortScrapping
     
     region_id_list.each do |region_id| #Adding the [0..3] to limit the number of tests
      @url_region = "/region:#{region_id}"
+     build_url
      puts "*Scrapping for region #{region_id}*"
      changeDate
    end
@@ -41,7 +42,7 @@ class ResortScrapping
  
   def changeDate
     season_start = Date.new(2017,12,9)
-    season_end = Date.new(2018,5,5) #Here change the season end to increase tests
+    season_end = Date.new(2017,12,16) #Here change the season end to increase tests
     number_of_weeks = (season_end-season_start)/7
     number_of_weeks = number_of_weeks.to_i
 
@@ -49,6 +50,7 @@ class ResortScrapping
       #change url
       @start_date = season_start + (i-1)*7
       @url_dates = "/arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
+      build_url
       puts "***Scrapping for starting date #{@start_date}***"
       changePage
     end
@@ -59,16 +61,17 @@ class ResortScrapping
 
     #Getting the total number of pages to scrap
     @url_pages = "/page:1"
+    build_url
     page = HTTParty.get(@url)
     current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
 
     # current_number_of_pages = 1 #just to test with fewer pages
-
+    puts current_number_of_pages
     (current_number_of_pages-1).times do |i|
       puts "*****Scrapping page number #{i+1} of week starting #{@start_date}*****"
-        @url_pages = "/page:#{i+1}"
-        build_url
-        getDataFromPage
+      @url_pages = "/page:#{i+1}"
+      build_url
+      getDataFromPage
     end
 
   end
