@@ -48,7 +48,7 @@ class ResortScrapping
     number_of_weeks.times do |i|
       #change url
       @start_date = season_start + (i-1)*7
-      @url_dates = "arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
+      @url_dates = "/arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
       puts "***Scrapping for starting date #{@start_date}***"
       changePage
     end
@@ -58,6 +58,7 @@ class ResortScrapping
   def changePage
 
     #Getting the total number of pages to scrap
+    @url_pages = "/page:1"
     page = HTTParty.get(@url)
     current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
 
