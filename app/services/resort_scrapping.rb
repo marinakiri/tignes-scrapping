@@ -31,28 +31,9 @@ class ResortScrapping
   def changeResort
 
     # region_id_list = Resort.pluck(:region_number)
-#     region_id_list = [
-#       "66613081",
-#       "66613021
-#       "66613165
-#       "66613017
-# 66613128
-# 66612899
-# 66612786
-# 66612963
-# 66612964
-# 66612827
-# 66612992
-# 66612972
-# 66612991
-# 66612967
-# 66612967
-# 66612921
-# 66612922
-# 6668622
-# 6668738
-# 6668750
-# 6668612
+     region_id_list = [
+        "6662305","6662388","6662510","6662479", "6662509", "66613081", "66613021","66613165", "66613017","66613128", "66612899", "66612786", "66612963","66612964", "66612827","66612992", "66612972", "66612991", "66612967", "66612967", "66612921", "66612922", "6668622", "6668738", "6668750", "6668612"
+      ]
     
     region_id_list.each do |region_id| #Adding the [0..3] to limit the number of tests
      @url_region = "/region:#{region_id}"
@@ -62,20 +43,19 @@ class ResortScrapping
    end
   
   # Test sur une région
-    @url_region = "/region:66612957"
-    changeDate
+    # @url_region = "/region:66612957"
+    # changeDate
 
   end
  
   def changeDate
-    season_start = Date.new(2017,12,23)
-    season_end = Date.new(2018,5,5) #Here change the season end to increase tests
+    season_start = Date.new(2018,2,3)
+    season_end = Date.new(2018,3,3) #Here change the season end to increase tests
     number_of_weeks = (season_end-season_start)/7
     number_of_weeks = number_of_weeks.to_i
 
-    number_of_weeks.times do |i|
-      #change url
-      @start_date = season_start + (i-1)*7
+    for i in (0..number_of_weeks-1) do
+      @start_date = season_start + i*7
       @url_dates = "/arrival:" + start_date.strftime + "/departure:" + (start_date+7).strftime + "/"
       build_url
       puts "***Scrapping for starting date #{@start_date}***"
@@ -89,10 +69,10 @@ class ResortScrapping
     #Getting the total number of pages to scrap
     @url_pages = "/page:1"
     build_url
-    page = HTTParty.get(@url)
-    current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
+    # page = HTTParty.get(@url)
+    # current_number_of_pages = JSON.parse(page.body)["results"]["pageCount"]
 
-    # current_number_of_pages = 1 #just to test with fewer pages
+    current_number_of_pages = 1 #just to test with fewer pages
     puts current_number_of_pages
     for i in (0..current_number_of_pages-1) do
       page = HTTParty.get(@url)
