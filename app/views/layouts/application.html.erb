@@ -6,6 +6,27 @@
 	    <%= csrf_meta_tags %>
 	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+		<!-- Cookie consent from Insight -->
+	    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	    <script>
+	    window.addEventListener("load", function(){
+	    window.cookieconsent.initialise({
+	      "palette": {
+	        "popup": {
+	          "background": "#edeff5",
+	          "text": "#838391"
+	        },
+	        "button": {
+	          "background": "#4b81e8"
+	        }
+	      },
+	      "theme": "classic"
+	    })});
+	    </script>
+		<!-- End of Cookie consent from Insight -->
+
 	</head>
 
 	<body>
