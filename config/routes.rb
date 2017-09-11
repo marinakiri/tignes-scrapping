@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stations/show'
+
   devise_for :users
   get 'classifieds/index'
 
