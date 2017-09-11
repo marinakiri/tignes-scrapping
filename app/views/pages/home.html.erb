@@ -1,6 +1,6 @@
 <h1>Tous les tarifs de location à la semaine de vos concurrents</h1>
 
-<%= form_tag(session_path) do %>
+<%= form_tag(stations_show_path, method: "get") do %>
   <%= label_tag(:q, "Entrez votre station :") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag 'Go' %>
