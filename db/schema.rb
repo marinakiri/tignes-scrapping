@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170908123717) do
 
 # Could not dump table "classifieds" because of following StandardError
-#   Unknown type '' for column 'json_data'
+#   Unknown type 'jsonb' for column 'json_data'
 
   create_table "resorts", force: :cascade do |t|
     t.string "name"

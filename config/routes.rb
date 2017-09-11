@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :classifieds
   get '/search', to: 'classifieds#search'
   
-  root 'classifieds#search'
+  root 'pages#home'
 
   get 'stations/show'
 
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/legal', to: 'pages#legal'
   get '/pricing', to: 'pages#pricing'
+  get '/results', to: 'pages#results'
+
 
   get '/account', to:'customers#show'
 
