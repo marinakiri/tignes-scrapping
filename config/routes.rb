@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'customers/show'
 
   devise_for :users
-  get 'classifieds/index'
-
-  root 'pages#home'
+  resources :classifieds
+  get '/search', to: 'classifieds#search'
+  
+  root 'classifieds#search'
 
   get 'stations/show'
 

@@ -1,0 +1,34 @@
+<h1>Prices search</h1>
+<p>Find the average price </p>
+
+  <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+    <%= text_field_tag :ville%>
+    <%= text_field_tag :number_of_guests%>
+    <%= submit_tag 'search the average price', class: "btn btn-primary" %>
+  <% end %>
+
+<% unless @results.nil? || @results.size == 0 %>
+
+<p>Average Price per week : <%= @average_price * 7 %></tr>
+  <table style="width:100%">
+    <tr>
+      <th>City's Name</th>
+      <th>Start Date</th>
+      <th>Price per night</th>
+      <th>Classifieds Name</th>
+    </tr>
+
+    <tbody>
+      <% @results.each do |r| %>
+      <tr>
+        <td><%=r['ville'] %></td>
+        <td><%=r['start_date'] %></td>
+        <td><%=r['price'] %></td>
+        <td><%=r['title'] %></td>
+      </tr>
+      <% end %>
+      
+    </tbody>
+
+  </table> 
+<% end %>
