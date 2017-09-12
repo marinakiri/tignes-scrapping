@@ -1,3 +1,5 @@
+require ‘sidekiq/web’
+
 Rails.application.routes.draw do
 
   get 'customers/show'
@@ -17,7 +19,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to:'users#dashboard'
 
-  mount Sidekiq::Web => ‘/sidekiq’
+  # authenticate :user, lambda { |bu| bu.super_admin? } do
+     mount Sidekiq::Web => '/sidekiq'
+  # end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
