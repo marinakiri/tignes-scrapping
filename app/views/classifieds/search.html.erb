@@ -19,21 +19,21 @@
 
   <% unless @results.nil? || @results.size == 0 %>
 
-  <p>Average Price per week : <%= @average_price * 7 %></tr></p>
+  <p>Prix moyen par semaine : <%= (@average_price * 7).round %></tr></p>
     <table style="width:100%">
       <tr>
-        <th>City's Name</th>
-        <th>Start Date</th>
-        <th>Price per night</th>
-        <th>Classifieds Name</th>
+        <th>Station de ski</th>
+        <th>Semaine débutant le :</th>
+        <th>Prix par semaine</th>
+        <th>Intitulé de l'annonce</th>
       </tr>
 
       <tbody>
         <% @results.each do |r| %>
         <tr>
-          <td><%=r['ville'] %></td>
-          <td><%=r['start_date'] %></td>
-          <td><%=r['price'] %></td>
+          <td><%=r['ville'].capitalize %></td>
+          <td><%="#{r['start_date'].mday}-#{r['start_date'].mon}-#{r['start_date'].year}"%></td>
+          <td><%=(r['price']*7).round %></td>
           <td><%=r['title'] %></td>
         </tr>
         <% end %>
