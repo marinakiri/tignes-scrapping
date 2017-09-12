@@ -1,51 +1,50 @@
-<h1>Prices search</h1>
-<p>Find the average price </p>
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  
 
-  <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-    <%= text_field_tag :ville%>
-    <%= text_field_tag :number_of_guests%>
-    <%= submit_tag 'search the average price', class: "btn btn-primary" %>
+</head>
+
+<body>
+  <h1>Prices search</h1>
+  <p>Find the average price </p>
+
+    <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+      <select id = "ville" <%= text_field_tag :ville%> >
+        <% Classified.group("ville").pluck("ville").each do |ville| %>
+          <option value = <%=ville%>> <%=ville %> </option> 
+        <% end %>
+      </select>
+      <select id = "number_of_guests" <%= text_field_tag :number_of_guests%> >
+        <option value = "4"> 4 </option>
+        <option value = "5"> 5 </option>
+      </select>
+      <%= submit_tag 'search the average price', class: "btn btn-primary" %>
+    <% end %>
+
+  <% unless @results.nil? || @results.size == 0 %>
+
+  <p>Average Price per week : <%= @average_price * 7 %></tr></p>
+    <table style="width:100%">
+      <tr>
+        <th>City's Name</th>
+        <th>Start Date</th>
+        <th>Price per night</th>
+        <th>Classifieds Name</th>
+      </tr>
+
+      <tbody>
+        <% @results.each do |r| %>
+        <tr>
+          <td><%=r['ville'] %></td>
+          <td><%=r['start_date'] %></td>
+          <td><%=r['price'] %></td>
+          <td><%=r['title'] %></td>
+        </tr>
+        <% end %>
+        
+      </tbody>
+
+    </table> 
   <% end %>
-
-<% unless @results.nil? || @results.size == 0 %>
-
-<p>Average Price per week : <%= @average_price * 7 %></tr>
-
-  <table style="width:100%">
-    <tr>
-      <th>Start Date</th>
-      <th>Average Price per night</th>
-    </tr>
-
-    <tbody>
-      <% @results1.each do |r| %>
-      <tr>
-        <td><%=r['start_date'] %></td>
-        <td><%=r['price'] %></td>
-      </tr>
-      <%end%>
-    </tbody>
-  </table>
-
-  <table style="width:100%">
-    <tr>
-      <th>City's Name</th>
-      <th>Start Date</th>
-      <th>Price per night</th>
-      <th>Classifieds Name</th>
-    </tr>
-
-    <tbody>
-      <% @results.each do |r| %>
-      <tr>
-        <td><%=r['ville'] %></td>
-        <td><%=r['start_date'] %></td>
-        <td><%=r['price'] %></td>
-        <td><%=r['title'] %></td>
-      </tr>
-      <% end %>
-      
-    </tbody>
-
-  </table> 
-<% end %>
+</body>
