@@ -7,7 +7,7 @@ class ScrappingWorker
   URL_FIX_FIRST   = 'https://www.abritel.fr/ajax/map/results/refined'
   URL_FIX_SECOND  = '/@,,,,z'
   SEASON_START    = Date.new(2017, 12, 9)
-  SEASON_END      = SEASON_START + 14
+  SEASON_END      = Date.new(2018, 5, 5)
 
   def perform(region)
     Sidekiq.logger.info "*Scrapping for region #{region}*"
