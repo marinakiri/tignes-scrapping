@@ -1,9 +1,3 @@
-<p>
-Youhou je suis le calendrier !
-</p>
-
-
-
 
 <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
   <%= check_box_tag(:frequency_type, value = "1", checked = false, options = {}) %>
