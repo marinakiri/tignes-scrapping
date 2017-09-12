@@ -10,17 +10,11 @@
   <p>Find the average price </p>
 
     <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-      <select id = "ville" <%= text_field_tag :ville%> >
-        <% Classified.group("ville").pluck("ville").each do |ville| %>
-          <option value = <%=ville%>> <%=ville %> </option> 
-        <% end %>
-      </select>
-      <select id = "number_of_guests" <%= text_field_tag :number_of_guests%> >
-        <% (1..12).to_a.each do |number_of_guests| %>
-          <option value = <%=number_of_guests%>> <%=number_of_guests %> </option> 
-        <% end %>
-      </select>
-      <%= submit_tag 'search the average price', class: "btn btn-primary" %>
+      <%= label_tag(:ville, "Station de ski") %>
+      <%= select_tag(:ville, options_for_select(Classified.group("ville").pluck("ville"))) %>
+      <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
+      <%= select_tag(:number_of_guests, options_for_select((1..12).to_a))%>
+      <%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %>
     <% end %>
 
   <% unless @results.nil? || @results.size == 0 %>
