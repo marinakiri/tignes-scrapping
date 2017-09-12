@@ -10,6 +10,23 @@
 <% unless @results.nil? || @results.size == 0 %>
 
 <p>Average Price per week : <%= @average_price * 7 %></tr>
+
+  <table style="width:100%">
+    <tr>
+      <th>Start Date</th>
+      <th>Average Price per night</th>
+    </tr>
+
+    <tbody>
+      <% @results1.each do |r| %>
+      <tr>
+        <td><%=r['start_date'] %></td>
+        <td><%=r['price'] %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+
   <table style="width:100%">
     <tr>
       <th>City's Name</th>
