@@ -1,3 +1,17 @@
 // Place all the styles related to the Classifieds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.calendar
+{
+  text-align: center;
+  td
+  {
+    width:120px;
+  }
+  th
+  {
+    width:75px; 
+    text-align: center;
+  }
+}

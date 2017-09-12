@@ -17,9 +17,91 @@
       <%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %>
     <% end %>
 
+<hr>
+
   <% unless @results.nil? || @results.size == 0 %>
 
-  <p>Prix moyen par semaine : <%= (@average_price * 7).round %></tr></p>
+  <table class="calendar">
+    <tr>
+      <th>Semaine</th>
+      <th>décembre</th>
+      <th>janvier</th>
+      <th>février</th>
+      <th>mars</th>
+      <th>avril</th>
+      <th>mai</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td><div class="date">2-9</div>
+        <% if @averages[start_date=Date.new(2017,12,2)]!= nil %>
+          <%= (@averages[start_date=Date.new(2017,12,2)]*7).round %>€
+          (<%= @counts[start_date=Date.new(2017,12,2)].round%>)
+        <% else %>
+          -
+        <% end %>
+      </td>
+      <td><div class="date">30-6</div>
+        <% if @averages[start_date=Date.new(2018,1,6)]!= nil %>
+          <%= (@averages[start_date=Date.new(2018,1,6)]*7).round %>€
+          (<%= @counts[start_date=Date.new(2018,1,6)].round%>)
+        <% else %>
+          -
+        <% end %>
+      </td>
+      <td><div class="date">3-10</div>
+        <% if @averages[start_date=Date.new(2018,2,3)]!= nil %>
+          <%= (@averages[start_date=Date.new(2018,2,3)]*7).round %>€
+          (<%= @counts[start_date=Date.new(2018,2,3)].round%>)
+        <% else %>
+          -
+        <% end %>
+      </td>
+      <td><div class="date">3-10</div></td>
+      <td><div class="date">31-7</div></td>
+      <td><div class="date">28-5</div></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td><div class="date">9-16</div></td>
+      <td><div class="date">6-13</div></td>
+      <td><div class="date">17-24</div></td>
+      <td><div class="date">17-24</div></td>
+      <td><div class="date">14-21</div></td>
+      <td><div class="date">12-19</div></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td><div class="date">16-23</div></td>
+      <td><div class="date">13-20</div></td>
+      <td><div class="date">17-24</div></td>
+      <td><div class="date">17-24</div></td>
+      <td><div class="date">14-21</div></td>
+      <td><div class="date">12-19</div></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td><div class="date">23-30</div></td>
+      <td><div class="date">20-27</div></td>
+      <td><div class="date">24-3</div></td>
+      <td><div class="date">24-31</div></td>
+      <td><div class="date">21-28</div></td>
+      <td><div class="date">19-26</div></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td></td>
+      <td><div class="date">27-3</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+<hr>
+
     <table style="width:100%">
       <tr>
         <th>Station de ski</th>
