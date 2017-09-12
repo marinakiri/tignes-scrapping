@@ -16,13 +16,14 @@ class ScrappingWorker
     self.region     = region
 
     (SEASON_START...SEASON_END).step(7).each do |date|
-      puts "***Scrapping for starting date #{date}***"
+      Sidekiq.logger.info "***Scrapping for starting date #{date}***"
 
       page = 1
 
       loop do
         json = HTTParty.get(url(date, page)).parsed_response
-
+        Sidekiq.logger.info url(date, page)
+        Sidekiq.logger.info "*****Scrapping page #{page}*****"
         get_data_from_json(date, json)
 
         break if page >= json['results']['pageCount']
@@ -40,7 +41,7 @@ class ScrappingWorker
 
     search_results.each do |r|
       if r['averagePrice'] && r['headline'] && r['detailPageUrl']
-        if Classified.find_by(classified_id: r["listingId"], start_date: date).exists?
+        if Classified.find_by(abritel_classified_id: r["listingId"], start_date: date)
           @double += 1
           Sidekiq.logger.info "!!! already in database !!!"
           next
