@@ -1,11 +1,4 @@
-<head>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  
 
-</head>
-
-<body>
   <h1>Prices search</h1>
   <p>Find the average price </p>
 
@@ -99,29 +92,4 @@
       <td></td>
     </tr>
   </table>
-
-<hr>
-
-    <table style="width:100%">
-      <tr>
-        <th>Station de ski</th>
-        <th>Semaine débutant le :</th>
-        <th>Prix par semaine</th>
-        <th>Intitulé de l'annonce</th>
-      </tr>
-
-      <tbody>
-        <% @results.each do |r| %>
-        <tr>
-          <td><%=r['ville'].capitalize %></td>
-          <td><%="#{r['start_date'].mday}-#{r['start_date'].mon}-#{r['start_date'].year}"%></td>
-          <td><%=(r['price']*7).round %></td>
-          <td><%=r['title'] %></td>
-        </tr>
-        <% end %>
-        
-      </tbody>
-
-    </table> 
   <% end %>
-</body>
