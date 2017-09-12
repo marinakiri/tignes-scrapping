@@ -16,8 +16,9 @@
         <% end %>
       </select>
       <select id = "number_of_guests" <%= text_field_tag :number_of_guests%> >
-        <option value = "4"> 4 </option>
-        <option value = "5"> 5 </option>
+        <% (1..12).to_a.each do |number_of_guests| %>
+          <option value = <%=number_of_guests%>> <%=number_of_guests %> </option> 
+        <% end %>
       </select>
       <%= submit_tag 'search the average price', class: "btn btn-primary" %>
     <% end %>
