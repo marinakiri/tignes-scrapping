@@ -1,0 +1,47 @@
+<p>
+Youhou je suis le calendrier !
+</p>
+
+
+
+
+<%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+  <%= check_box_tag(:frequency_type, value = "1", checked = false, options = {}) %>
+<% end%>
+
+<% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
+<% starting_date = Date.new(2017,12,9) %>
+<% frequency = 7 %>
+
+<div class="container">
+  <% 6.times do |j| %>
+    <div class="col-md-2">
+      <div class="average-price-box col-xs-12 calendar month">
+        <%= month_list[j].capitalize %>
+      </div>
+      <% 4.times do |i| %>
+      <div class="average-price-box col-xs-12 calendar">
+        <% current_date = starting_date + (i+j*4)*7 %>
+        <div class="date">
+          <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
+        </div>
+        <div class="price">
+          <% if @averages[start_date=current_date] != nil %>
+            <%= (@averages[start_date=current_date]*(frequency)).round %>
+            €
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+ <script type="text/javascript">
+    $('frequency_type').onclick;
+</script>
+
