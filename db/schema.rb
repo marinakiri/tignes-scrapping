@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913090444) do
+ActiveRecord::Schema.define(version: 20170913100520) do
 
 # Could not dump table "classifieds" because of following StandardError
 #   Unknown type 'jsonb' for column 'json_data'
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20170913090444) do
     t.index ["region_number"], name: "index_resorts_on_region_number"
     t.index ["ville"], name: "index_resorts_on_ville"
     t.index ["ville_url"], name: "index_resorts_on_ville_url"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "resort_id"
+    t.integer "user_id"
+    t.index ["resort_id"], name: "index_subscriptions_on_resort_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
