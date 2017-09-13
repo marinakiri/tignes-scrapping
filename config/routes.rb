@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  get 'subscriptions/destroy'
+
   get 'customers/show'
 
   devise_for :users
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   get '/pricing', to: 'pages#pricing'
 
   get '/dashboard', to:'users#dashboard'
+
+  resources :subscriptions, only: [:destroy]
 
   # authenticate :user, lambda { |bu| bu.super_admin? } do
      mount Sidekiq::Web => '/sidekiq'
