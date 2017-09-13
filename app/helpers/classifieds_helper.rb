@@ -1,6 +1,11 @@
 module ClassifiedsHelper
   def list_station
+<<<<<<< HEAD
     all_stations = Classified.group("ville").order("ville").pluck("ville")
+=======
+    #take all ville in an array
+    villes = Classified.group("ville").order("ville").pluck("ville")
+>>>>>>> master
     #iterate over the array
     list_of_station = []
     all_stations.each do |i|
