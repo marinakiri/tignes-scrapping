@@ -12,11 +12,49 @@
   <% end %>
 </div>
 <hr>
-<h2>Détail par station</h2>
+
+<!-- Initialization for calendar -->
+<% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
+<% starting_date = Date.new(2017,12,9) %>
+<% frequency = 7 %>
 <% number_of_guests = 4 %>
+<!-- End of initialization for calendar -->
+
+<h2>Détail par station</h2>
+
 <% @subscriptions.each do |s| %>
   <h3><%= s.resort.ville.capitalize %></h3>
-  
+
+<!-- Calendar -->
+
+<div class="container">
+  <% 6.times do |j| %>
+    <div class="col-md-2">
+      <div class="average-price-box col-xs-12 calendar month">
+        <%= month_list[j].capitalize %>
+      </div>
+      <% 4.times do |i| %>
+      <div class="average-price-box col-xs-12 calendar">
+        <% current_date = starting_date + (i+j*4)*7 %>
+        <div class="date">
+          <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
+        </div>
+        <div class="price">
+          <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests]] != nil %>
+            <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests]]*(frequency)).round %>
+            €
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- end of calendar -->
+
   <hr>
 <%end%>
 
