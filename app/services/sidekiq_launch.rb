@@ -6,7 +6,7 @@ class SidekiqLaunch
 
     regions.each do |region|
       # ScrappingWorker.perform_async(region)
-      ScrappingWorker.new.perform(region)
+      ScrappingWorker.perform_async(region)
     end
   end
 
