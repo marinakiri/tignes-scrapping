@@ -5,7 +5,8 @@ class SidekiqLaunch
     regions = regions.shuffle
 
     regions.each do |region|
-      ScrappingWorker.perform_async(region)
+      # ScrappingWorker.perform_async(region)
+      ScrappingWorker.new.perform(region)
     end
   end
 
