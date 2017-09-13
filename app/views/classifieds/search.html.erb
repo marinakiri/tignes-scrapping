@@ -3,11 +3,12 @@
   <p>Find the average price </p>
 
   <% list_of_stations = [] %>
+
   <% Classified.group("ville").order("ville").pluck("ville") %>
 
     <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
       <%= label_tag(:ville, "Station de ski") %>
-      <%= select_tag(:ville, options_for_select(Classified.group("ville").pluck("ville")), multiple: false, class:'select-resort') %>
+      <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
       <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
       <%= select_tag(:number_of_guests, options_for_select((1..12).to_a))%>
       <%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %>
