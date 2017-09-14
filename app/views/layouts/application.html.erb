@@ -20,7 +20,7 @@
 		<%= render 'layouts/header' %>
 
 		<div id="wrap">
-			<div id="main" class="container clear-top">
+			<div id="main" class="clear-top">
 				<% if notice %>
 				<p class="alert alert-success"><%= notice %></p>
 				<% end %>
@@ -28,7 +28,9 @@
 				<p class="alert alert-danger"><%= alert %></p>
 				<% end %>
 
-				<%= yield %>
+				<div class="container">
+					<%= yield %>
+				</div>
 			</div>
 		</div>
 		
