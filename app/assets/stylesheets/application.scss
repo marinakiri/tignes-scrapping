@@ -7,34 +7,55 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
 * {
 	font-family: Raleway, Helvetica, Arial, sans-serif;
 	list-style: none;
 }
 
-$a-tags: 'a, a:active, a:hover, a:visited';
-$a-tags-hover: 'a:active, a:hover';
+html, body {
+  height: 100%;
+}
 
-nav {
-	.navbar-custom {
-		background-color: #1D0826;
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 50px; /* this needs to be bigger than footer height*/
+}
+
+.navbar-custom {
+	background-color: #1D0826;
+	color: #fff;
+	clear: both;
+
+	#{$a-tags} {
 		color: #fff;
+		text-decoration: none;
+	}
 
-		#{$a-tags} {
-			color: #fff;
-			text-decoration: none;
-		}
-
-		#{$a-tags-hover} {
-			color: #ccc;
-		}
+	#{$a-tags-hover} {
+		color: #ccc;
 	}
 }
 
-footer { 
+header {
+	clear: both;
+}
+
+.footer { 
 	width: 100%;
-	position: absolute;
-	bottom: 0;
+	clear: both;
+	position: relative;
+	height: 30px;
+	margin-top: -30px;
+	clear:both;
+	padding-top: 50px;
 
 	.navbar-footer {
 		height: 30px;
@@ -57,6 +78,11 @@ footer {
 		}
 	}
 }
+
+
+
+
+
 
 
 

@@ -18,17 +18,19 @@
 	<body>
 		<%= render 'layouts/header' %>
 
-		<% if notice %>
-		<p class="alert alert-success"><%= notice %></p>
-		<% end %>
-		<% if alert %>
-		<p class="alert alert-danger"><%= alert %></p>
-		<% end %>
+		<div id="wrap">
+			<div id="main" class="container clear-top">
+				<% if notice %>
+				<p class="alert alert-success"><%= notice %></p>
+				<% end %>
+				<% if alert %>
+				<p class="alert alert-danger"><%= alert %></p>
+				<% end %>
 
-		<div class="container">
-		<%= yield %>
+				<%= yield %>
+			</div>
 		</div>
-
+		
 		<%= render 'layouts/footer' %>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
