@@ -24,6 +24,7 @@ html, body {
 
 #wrap {
   min-height: 100%;
+  padding-bottom: 50px;
 }
 
 #main {
@@ -61,7 +62,6 @@ header {
 	height: 30px;
 	margin-top: -30px;
 	clear:both;
-	padding-top: 50px;
 
 	.navbar-footer {
 		height: 30px;
