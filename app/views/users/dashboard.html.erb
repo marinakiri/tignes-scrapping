@@ -1,14 +1,98 @@
 <h1>Veille concurrentielle</h1>
 
 <% if user_signed_in? %>
-  <p>Voici les données de veille concurrentielle.</p>
-<% else %>
+  <p>Les stations de ski auxquelles vous êtes abonné</p>
+  <div class="row">
+    <% @subscriptions.each do |s| %>
+    <div class="col-xs-2">
+    <div class="station-bloc col xs-11">
+      <%= s.resort.ville %>, <span class='delete_cross' ><%= link_to "x", "/subscriptions/#{s.id}", method: :delete %> </span>
+    </div>
+    </div>
+  <% end %>
+</div>
+<hr>
+
+<!-- Initialization for calendar -->
+<% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
+<% starting_date = Date.new(2017,12,9) %>
+<% frequency = 7 %>
+<% number_of_guests = 4 %>
+<!-- End of initialization for calendar -->
+
+<h2>Détail par station</h2>
+
+<% @subscriptions.each do |s| %>
+  <h3><%= s.resort.ville.capitalize %></h3>
+
+<!-- Calendar -->
+
+<div class="container">
+  <% 6.times do |j| %>
+    <div class="col-md-2">
+      <div class="average-price-box col-xs-12 calendar month">
+        <%= month_list[j].capitalize %>
+      </div>
+      <% 4.times do |i| %>
+      <div class="average-price-box col-xs-12 calendar">
+        <% current_date = starting_date + (i+j*4)*7 %>
+        <div class="date">
+          <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
+        </div>
+        <div class="price">
+          <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests]] != nil %>
+            <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests]]*(frequency)).round %>
+            €
+          <% else %>
+            -
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<!-- end of calendar -->
+
+  <hr>
+<%end%>
+
+
+
+  <p>Si vous souhaitez vous abonnez à une nouvelle station :</p>
+
+  <%=form_tag({controller: 'users', action: 'dashboard'}, method: :get) do %>
+    <%= select_tag(:ville, options_for_select(Resort.group('ville').pluck('ville')), multiple: false, class:'select-resort') %>
+    <%= submit_tag "s'abonner à cette station", class: "btn btn-primary" %>
+  <% end %>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ <% else %>
   Veuillez vous connecter pour accéder à l'outil professionnel :
   <ul>
     <li><%= link_to "Log in", new_user_session_path, :class => 'navbar-link'  %>, si vous avez déjà un compte,
     </li>
     <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>, pour vous inscrire !
     </li>  
-  </ul>
-  
+  </ul> 
 <%end%>
+
+
+<script type="text/javascript">
+    // $('select-resort').select2();
+    $(document).ready(function() { $('#ville').select2(); });
+</script>
