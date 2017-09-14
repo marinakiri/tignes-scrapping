@@ -1,8 +1,4 @@
 
-<%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-  <%= check_box_tag(:frequency_type, value = "1", checked = false, options = {}) %>
-<% end%>
-
 <% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
 <% starting_date = Date.new(2017,12,9) %>
 <% frequency = 7 %>

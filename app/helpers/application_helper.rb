@@ -17,4 +17,8 @@ module ApplicationHelper
     return(list_of_station)
 
   end
+
+  def list_of_number_of_guests
+      return Classified.where(ville:@search.ville).group("number_of_guests").count.keys
+  end
 end

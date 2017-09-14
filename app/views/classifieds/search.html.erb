@@ -10,18 +10,19 @@
       <%= submit_tag 'valider', class: "btn btn-primary" %> 
       <%end%>
   </div>
+
   <div class="form-group">
     <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
       <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
-      <%= select_tag(:number_of_guests, options_for_select((1..12).to_a))%>
+      <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
       <%= submit_tag 'valider', class: "btn btn-primary" %>
     <% end %>
   </div>
-  
-  <h2><%= @search.ville %></h2>
-  <h3><%= @search.number_of_guests %> </h3>
 
 <hr>
+
+  <h3><%= @search.ville.capitalize %></h3>
+  <h4>Capacité d'accueil : <%= @search.number_of_guests %> </h4>
 
   <% unless @results.nil? || @results.size == 0 %>
 
@@ -32,6 +33,7 @@
   <script type="text/javascript">
     // $('select-resort').select2();
     $(document).ready(function() { $('#ville').select2(); });
+    $(document).ready(function() { $('#number_of_guests').select2(); });
     // $("#select1").on('click', function(){ 
     //   alert(ville);
     //   return false;

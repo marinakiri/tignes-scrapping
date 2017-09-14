@@ -16,14 +16,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-
-function main() {
-  var ville = $('#ville').title
-  ville.hide();
-  ville.fadeIn(1000);
-
-  $('#ville').on('click', function () {
-    $(this).next().toggle();
-  });
-}
-$(document).ready(main);
