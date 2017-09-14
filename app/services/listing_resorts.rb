@@ -43,7 +43,7 @@ class ListingResorts
         current_resort.ville_url = link.split("_")[indice_url]
         current_resort.ville = URI.unescape(link.split("_")[indice_url])
         current_resort.save
-      elsif Resort.find_by_region_number(resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1]) != nil
+      elsif resp.split("\n").grep(/<link rel=\"next\"/)[0] != nil && Resort.find_by_region_number(resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1]) != nil
         puts "already in database"
       end
     else
