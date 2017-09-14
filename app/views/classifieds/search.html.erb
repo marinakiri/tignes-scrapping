@@ -1,4 +1,3 @@
-
   <p>Nombre d'annonces dans notre base de donnée : <%= @classifieds.count%></p>
 
   <h1>Vous louez votre bien à la montage?</h1>
@@ -6,18 +5,21 @@
 
   <div class="form-group">
     <%=form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-      <!--<%= label_tag(:ville, "Station de ski") %>-->
+      <%= label_tag(:ville, "Station de ski") %>
       <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
-      <!--<%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %> 
+      <%= submit_tag 'valider', class: "btn btn-primary" %> 
       <%end%>
-    <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %> -->
+  </div>
+  <div class="form-group">
+    <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
       <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
       <%= select_tag(:number_of_guests, options_for_select((1..12).to_a))%>
-      <%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %>
+      <%= submit_tag 'valider', class: "btn btn-primary" %>
     <% end %>
   </div>
-  <%= @current_ville %>
-  <%= @number_of_guests %> 
+  
+  <h2><%= @search.ville %></h2>
+  <h3><%= @search.number_of_guests %> </h3>
 
 <hr>
 
