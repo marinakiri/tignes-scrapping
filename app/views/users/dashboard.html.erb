@@ -11,19 +11,37 @@
     </div>
   <% end %>
 </div>
+
+<!-- Formulaire pour déterminer le nombre de personnes -->
+<h2>Capacité d'accueil cible</h2>
+<p>Sélectionner le nombre de personnes maximum par appartement</p>
+<%= form_tag({controller: "users", action: "dashboard" }, method: :get) do %>
+    <%= select_tag("number_of_guests", options_for_select((1..12).to_a))%> <!-- Changer la façon d'initialiser pour le faire sur quelque chose qui existe -->
+    <%= submit_tag 'Valider', class: "btn btn-primary" %>
+  <% end %>
+<!-- fin du formulaire pour déterminer le nombre de personnes -->
+
 <hr>
 
 <!-- Initialization for calendar -->
 <% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
 <% starting_date = Date.new(2017,12,9) %>
 <% frequency = 7 %>
-<% number_of_guests = 4 %>
+
 <!-- End of initialization for calendar -->
 
 <h2>Détail par station</h2>
 
 <% @subscriptions.each do |s| %>
+
+  <% if @number_of_guests %>
+    <% number_of_guests = @number_of_guests %>
+  <% else %>
+    <% number_of_guests = 4 %> <!-- Changer la façon d'initialiser pour le faire sur quelque chose qui existe -->
+  <% end%>
+
   <h3><%= s.resort.ville.capitalize %></h3>
+  <h4>Capacité d'accueil : <%= number_of_guests %></h4>
 
 <!-- Calendar -->
 
@@ -40,8 +58,8 @@
           <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
         </div>
         <div class="price">
-          <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests]] != nil %>
-            <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests]]*(frequency)).round %>
+          <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]] != nil %>
+            <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]]*(frequency)).round %>
             €
           <% else %>
             -
