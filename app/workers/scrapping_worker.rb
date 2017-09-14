@@ -29,7 +29,7 @@ class ScrappingWorker
         Sidekiq.logger.info "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-Scrapping page #{page}-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"
         get_data_from_json(date, json)
 
-        break if page >= json['results']['pageCount']
+        break if page >= json['results']['pageCount'] || page >= 15
         page += 1
       end
     end
@@ -88,7 +88,7 @@ class ScrappingWorker
   end
 
   def region_url_part
-    "/region:#{region}"
+    "/region:#{self.region}"
   end
 
   def date_url_part(date_begin)
