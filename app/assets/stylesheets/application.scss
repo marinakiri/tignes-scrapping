@@ -2,6 +2,7 @@
  *= require select2
  *= require_tree .
  *= require_self
+ *= require devise_bootstrap_views
  */
 
 @import "bootstrap-sprockets";
@@ -12,12 +13,13 @@ $a-tags: 'a, a:active, a:hover, a:visited';
 $a-tags-hover: 'a:active, a:hover';
 
 * {
-	font-family: Raleway, Helvetica, Arial, sans-serif;
+	font-family: Raleway;
 	list-style: none;
 }
 
 html, body {
   height: 100%;
+  background-color: #F5EEEE;
 }
 
 #wrap {
@@ -46,6 +48,10 @@ html, body {
 
 header {
 	clear: both;
+
+	li {
+		padding-left: 20px;
+	}
 }
 
 .footer { 
