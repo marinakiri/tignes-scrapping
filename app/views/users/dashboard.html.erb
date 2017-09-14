@@ -63,7 +63,7 @@
   <p>Si vous souhaitez vous abonnez à une nouvelle station :</p>
 
   <%=form_tag({controller: 'users', action: 'dashboard'}, method: :get) do %>
-    <%= select_tag(:ville, options_for_select(Resort.group('ville').pluck('ville')), multiple: false, class:'select-resort') %>
+    <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
     <%= submit_tag "s'abonner à cette station", class: "btn btn-primary" %>
   <% end %>
 
