@@ -9,10 +9,13 @@ class ScrappingWorker
   SEASON_START    = Date.new(2017, 12, 9)
   SEASON_END      = Date.new(2018, 5, 5)
 
+  def initialize
+    self.double     = 0
+  end
+
   def perform(region)
     Sidekiq.logger.info "*Scrapping for region #{region}*"
 
-    self.double     = 0
     self.region     = region
 
     (SEASON_START...SEASON_END).step(7).each do |date|
@@ -26,7 +29,7 @@ class ScrappingWorker
         Sidekiq.logger.info "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-Scrapping page #{page}-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"
         get_data_from_json(date, json)
 
-        break if page >= json['results']['pageCount']
+        break if page >= json['results']['pageCount'] || page >= 15
         page += 1
       end
     end
@@ -40,7 +43,7 @@ class ScrappingWorker
     search_results = results_json['results']['hits']
 
     search_results.each do |r|
-      if r['averagePrice'] && r['headline'] && r['detailPageUrl']
+      if r['averagePrice'] && r['headline'] && r['detailPageUrl'] && r["geography"]["ids"][1]
         if Classified.find_by(abritel_classified_id: r["listingId"], start_date: date)
           @double += 1
           Sidekiq.logger.info "------------------!!! already in database !!!------------------"
@@ -85,7 +88,7 @@ class ScrappingWorker
   end
 
   def region_url_part
-    "/region:#{region}"
+    "/region:#{self.region}"
   end
 
   def date_url_part(date_begin)

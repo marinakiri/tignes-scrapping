@@ -6,6 +6,7 @@ class ClassifiedsController < ApplicationController
   end
   
   def search
+    @classifieds = Classified.all
     @ville = params[:ville]
     @number_of_guests = params[:number_of_guests]    
     @results= Classified.where("ville":"#{@ville}").where("number_of_guests":"#{@number_of_guests}.to_i").order("start_date")
