@@ -22,6 +22,7 @@ gem 'devise'
 gem 'pivot_table'
 gem 'select2-rails'
 gem 'sidekiq'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
