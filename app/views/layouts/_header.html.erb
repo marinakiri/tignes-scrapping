@@ -6,7 +6,7 @@
                 <% if user_signed_in? %>
                     <ul class="navbar-nav">
                         <li>Bienvenue <strong><%= current_user.email %></strong> !</li>
-                        <li><%= link_to "Mon dashboard", "/", :class => 'navbar-link' %></li>
+                        <li><%= link_to "Mon dashboard", "/dashboard", :class => 'navbar-link' %></li>
                         <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link-custom'  %></li>
                     </ul>
                 <% else %>
