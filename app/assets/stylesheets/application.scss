@@ -7,8 +7,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body { 
-	padding-top: 100px; 
+* {
+	font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+.navbar-custom {
+	background-color: #1D0826;
+	height: 24px;
+	color: #fff;
+	line-height: 24px;
+
+	#{$a-tags} {
+	  color: #fff;
+	  text-decoration: none;
+	}
+
+	#{$a-tags-hover} {
+	  color: #ccc;
+	}
 }
 
 footer { 
