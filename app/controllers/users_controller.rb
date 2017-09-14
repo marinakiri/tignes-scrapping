@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	# before_action :authenticate_user!
+	before_action :authenticate_user!
   attr_accessor :current_ville_id
 
   def dashboard
