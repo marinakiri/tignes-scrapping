@@ -3,10 +3,10 @@
 <% starting_date = Date.new(2017,12,9) %>
 <% frequency = 7 %>
 
-<div class="calendar">
+<div>
   <% 6.times do |j| %>
-    <div class="col-md-2">
-      <div class="average-price-box col-xs-12 calendar month">
+    <div class="col-md-2 col-calendar">
+      <div class="col-xs-12 calendar month">
         <%= month_list[j].capitalize %>
       </div>
       <% 4.times do |i| %>

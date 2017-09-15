@@ -1,21 +1,27 @@
 <div class="container-fluid">
   <div class="row">
     <div class="slideshow"> 
+      <div class="slideshow-text col-md-offset-1 col-md-10">
+        
+        <h1 class="slideshow-h1">Vous louez votre bien à la montagne ?</h1>
+        <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
 
-      <h1>Vous louez votre bien à la montagne ?</h1>
-      <h2>Visualisez les prix de tous vos concurrents sur la saison</h2>
-
-      <div class="form-group">
-          <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-            <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
-            <%= submit_tag 'OK', class: "btn btn-primary" %> 
-          <% end %>
+        <div class="form-group station-search">
+            <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
+              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
+              <%= submit_tag 'OK', class: "btn btn-primary" %> 
+            <% end %>
+          
+        </div>
       </div>
-
     </div>
   </div>
 
+<% unless @search.ville.nil? %>
   <div class="row">
+    <div class="search-results col-md-offset-2 col-md-8">
+    
+  
     <h3><%= @search.ville.capitalize %></h3>
     <h4><%= @search.number_of_guests %> couchages</h4>
       <div class="form-group">
@@ -27,11 +33,13 @@
       </div>
       
       <% unless @results.nil? || @results.size == 0 %>
-      <%= render 'calendar' %>
-  
+      <div class="col-md-offset-1 col-md-10">
+        <%= render 'calendar' %>
+      </div>
      <% end %>
-  
+    </div>
   </div>
+<% end %>
 
 </div>
 
