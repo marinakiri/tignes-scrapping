@@ -7,24 +7,25 @@
   <% 6.times do |j| %>
     <div class="col-md-2 col-calendar">
       <div class="col-xs-12 calendar month">
-        <%= month_list[j].capitalize %>
+        <p><%= month_list[j].capitalize %></p>
       </div>
       <% 4.times do |i| %>
       <div class="average-price-box col-xs-12 calendar">
         <% current_date = starting_date + (i+j*4)*7 %>
         <div class="date">
-          <div class="mini-date">
-            <p>Sa </p><br>
-            <%= "#{current_date.mday}" %>
+          <div class="mini-date start-date">
+            <p>Sa</p>
+            <p><span class="bold"><%= "#{current_date.mday}" %></span></p>
           </div>
-          <div class="mini-date">
-            <p>Sa </p><br>
-            <%= "#{(current_date+7).mday}" %>
+          <div class="mini-date end-date">
+            <p>Sa</p>
+            <p><span class="bold"><%= "#{(current_date+7).mday}" %></span></p>
           </div>
         </div>
         <div class="price">
           <% if @averages[start_date=current_date] != nil %>
             <%= (@averages[start_date=current_date]*(frequency)).round %>€
+            <p>7 jours</p>
           <% else %>
             -
           <% end %>

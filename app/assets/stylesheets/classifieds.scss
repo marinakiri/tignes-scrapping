@@ -105,7 +105,7 @@
   margin-top: 2px;
   margin-bottom: 2px;
   padding: 0;
-  box-shadow: 1px 1px grey;
+  box-shadow: 0px 3px 3px lightgrey;
   display: flex;
   flex-direction: row;
 }
@@ -118,7 +118,6 @@
 
 .month
 {
-  font-weight:bold;
   padding-bottom: 0px;
   border:none;
   background-color: none;
@@ -130,22 +129,42 @@
   font-size: 0.8em;
   font-style: italic;
   padding: 0;
-  width:20%;
-  border: 1px solid green;
+  width:25%;
+  /*border: 1px solid green;*/
+  font-weight: normal;
 
 }
 
 .mini-date
 {
-  line-height: 10px;
+  height: 40px;
+  line-height: 0px;
+  /*border: 1px solid orange;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.start-date
+{
+  background-color: rgb(235,213,191);
+}
+.end-date
+{
+  background-color: rgb(215,201,208);
+}
+
+.bold
+{
+  font-weight: 900;
 }
 
 .price
 {
-  font-size: 1em;
-  font-weight:bold;
+  font-size: 1.2em;
+  font-weight: 3000;
   align-content: center;
-  width:80%;
+  width:75%;
   height: 20%;
   padding-top:0;
   padding-bottom:5px;
@@ -153,5 +172,11 @@
   margin-right: 0;
   margin-top:auto;
   margin-bottom:auto;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
+  p
+  {
+    font-size: 0.8em;
+    line-height: 0;
+    font-style: italic;
+  }
 }
