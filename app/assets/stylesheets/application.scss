@@ -1,6 +1,6 @@
 /*
- *= require select2
  *= require_self
+ *= require select2
  *= require devise_bootstrap_views
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_tree .
@@ -19,9 +19,14 @@ $a-tags-hover: 'a:active, a:hover';
 
 html, body {
 	height: 100%;
-	  background-color: #F5EEEE;   
+	background-color: #F5EEEE;   
 
 
+}
+
+body
+{
+	margin-top: 0;
 }
 
 #main {
@@ -92,12 +97,20 @@ header {
 .container-fluid
 {
 	/*border: solid green 5px;*/
+	padding-top: 0px;
 	margin-top: 50px;
 	margin-bottom: 30px;
 	padding-left: 0;
 	padding-right: 0;
+	min-height: 100%;
 }
 
+.btn-primary
+{
+	background-color:rgb(26,10,36);
+	color:white;
+	border:white;
+}
 
 
 

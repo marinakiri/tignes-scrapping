@@ -5,6 +5,7 @@
 .slideshow
 { 
   height:800px;
+  margin-top: 0;
   /*background-color: red; */
   /*background-size: contain;*/
   background-position: center; 
@@ -49,14 +50,9 @@
 .select-resort
 {
   width:250px;
-  height:35px;
+ /*line-height:45px;*/
 }
 
-#select2-ville-container
-{
-  width:250px;
-  height:35px;
-}
 
 .search-results
 {
@@ -67,6 +63,7 @@
   padding-right: 0;
   padding-bottom: 40px;
   margin-bottom: 30px;
+  box-shadow: 0px 3px 3px lightgrey;
 }
 
 .search-results-header
@@ -122,6 +119,12 @@
   box-shadow: 0px 3px 3px lightgrey;
   display: flex;
   flex-direction: row;
+}
+
+.average-price-box:hover
+{
+  box-shadow: 2px 5px 5px grey;
+  cursor:pointer;
 }
 
 .col-calendar

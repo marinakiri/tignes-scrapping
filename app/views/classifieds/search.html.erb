@@ -6,9 +6,17 @@
         <h1 class="slideshow-h1">Vous louez un bien à la montagne ?</h1>
         <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
 
+        <!-- To be prompted for stations -->
+        <% if @search.ville == nil %>
+          <% station_prompted = "Indiquez votre station" %>
+        <% else %>
+          <% station_prompted = @search.ville %>
+        <% end %>
+        <!-- End of to be prompted for stations -->
+
         <div class="form-group station-search">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
+              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
               <%= submit_tag 'OK', class: "btn btn-primary" %> 
             <% end %>
           
@@ -25,13 +33,21 @@
         <h3><%= @search.ville.capitalize %></h3>
         <h4><%= @results.count %> annonces</h4>
       </div>
-    
+
+      <!-- To be prompted for number_of_guests -->
+      <% if @search.number_of_guests == nil %>
+        <% number_prompted = "❄︎" %>
+      <% else %>
+        <% number_prompted = @search.number_of_guests %>
+      <% end %>
+      <!-- End of to be prompted for number_of_guests -->
+
       <div class="row search-results-nb-guests">
         <div class="col-md-offset-1 col-md-10">
           <div class="form-group">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
               <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
-              <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
+              <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests),prompt: number_prompted)%>
               <%= submit_tag 'OK', class: "btn btn-primary" %>
             <% end %>
           </div>
