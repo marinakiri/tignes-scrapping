@@ -21,7 +21,9 @@ $a-tags-hover: 'a:active, a:hover';
 html, body {
 	height: 100%;
 	/*  background-color: #F5EEEE; */  
-	background: #F5EEEE url('/assets/bgd-xl.jpg') no-repeat center center;
+	background-image: image-url('bgd-xl.jpeg');
+	background-repeat: no-repeat;
+	background-position: center center;
 
 }
 
