@@ -1,12 +1,15 @@
-<h1>Classifieds#index</h1>
-<p>Find me in app/views/classifieds/index.html.erb</p>
+<div class="home-custom">
+	<div class="container">
+		<p>Nombre d'annonces dans notre base de données : <%= @classifieds.count%></p>
 
-<% @classifieds.each do |c| %>
+		<h1>Vous louez votre bien à la montagne ?</h1>
+		<h2>Visualisez les prix de tous vos concurrents sur la saison</h2>
 
-  <p>
-  <%= c.title %>
-  Date de début :
-  <%= c.startDate %>
-  </p>
-
-<% end %>
+		<div class="form-group">
+		  	<%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
+		    	<%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
+		    	<%= submit_tag 'OK', class: "btn btn-primary" %> 
+		    <% end %>
+		</div>
+	</div>
+</div>
