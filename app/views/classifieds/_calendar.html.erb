@@ -13,12 +13,18 @@
       <div class="average-price-box col-xs-12 calendar">
         <% current_date = starting_date + (i+j*4)*7 %>
         <div class="date">
-          <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
+          <div class="mini-date">
+            <p>Sa </p><br>
+            <%= "#{current_date.mday}" %>
+          </div>
+          <div class="mini-date">
+            <p>Sa </p><br>
+            <%= "#{(current_date+7).mday}" %>
+          </div>
         </div>
         <div class="price">
           <% if @averages[start_date=current_date] != nil %>
-            <%= (@averages[start_date=current_date]*(frequency)).round %>
-            €
+            <%= (@averages[start_date=current_date]*(frequency)).round %>€
           <% else %>
             -
           <% end %>
