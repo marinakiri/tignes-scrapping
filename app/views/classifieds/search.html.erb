@@ -1,35 +1,33 @@
-<div class="home-custom">
-  <div class="container">
+<div class="container">
 
-    <% unless @results.nil? || @results.size == 0 %>
+  <% unless @results.nil? || @results.size == 0 %>
 
-      <h3><%= @search.ville.capitalize %></h3>
-      <h4><%= @search.number_of_guests %> couchages</h4>
+    <h3><%= @search.ville.capitalize %></h3>
+    <h4><%= @search.number_of_guests %> couchages</h4>
 
-      <div class="form-group">
-        <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-          <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
-          <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
-          <%= submit_tag 'OK', class: "btn btn-primary" %>
-        <% end %>
-      </div>
+    <div class="form-group">
+      <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+        <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
+        <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
+        <%= submit_tag 'OK', class: "btn btn-primary" %>
+      <% end %>
+    </div>
 
-      <%= render 'calendar' %>
+    <%= render 'calendar' %>
 
-    <% end %>
+  <% end %>
 
-    <script type="text/javascript">
-      // $('select-resort').select2();
-      $(document).ready(function() { $('#ville').select2(); });
-      $(document).ready(function() { $('#number_of_guests').select2(); });
-      // $("#select1").on('click', function(){ 
-      //   alert(ville);
-      //   return false;
-      // });
-      // $('#select1').on('click', function(){
-      //   $('.number_of_guests').toggle();
-      // });
-    </script>
-    
-  </div>
+  <script type="text/javascript">
+    // $('select-resort').select2();
+    $(document).ready(function() { $('#ville').select2(); });
+    $(document).ready(function() { $('#number_of_guests').select2(); });
+    // $("#select1").on('click', function(){ 
+    //   alert(ville);
+    //   return false;
+    // });
+    // $('#select1').on('click', function(){
+    //   $('.number_of_guests').toggle();
+    // });
+  </script>
+  
 </div>
