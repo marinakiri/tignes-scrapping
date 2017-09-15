@@ -7,7 +7,7 @@
   <% 6.times do |j| %>
     <div class="col-md-2 col-calendar">
       <div class="col-xs-12 calendar month">
-        <p><%= month_list[j].capitalize %></p>
+        <%= month_list[j].capitalize %>
       </div>
       <% 4.times do |i| %>
       <div class="average-price-box col-xs-12 calendar">
@@ -35,8 +35,3 @@
     </div>
   <% end %>
 </div>
-
-<script type="text/javascript">
-    $('frequency_type').onclick;
-</script>
-

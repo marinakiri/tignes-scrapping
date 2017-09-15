@@ -28,20 +28,34 @@
 {
   color:white;
   font-weight: bold;
-  font-size:2em;
+  font-size:4em;
+  text-shadow: 0px 2px 2px black;
   text-align: center;
 }
 
 .slideshow-h2
 {
   color:white;
-  font-size:1.5em;
+  font-size:2em;
   text-align: center;
+  text-shadow: 0px 2px 2px grey;
 }
 
 .station-search
 {
   text-align: center;
+}
+
+.select-resort
+{
+  width:250px;
+  height:35px;
+}
+
+#select2-ville-container
+{
+  width:250px;
+  height:35px;
 }
 
 .search-results
