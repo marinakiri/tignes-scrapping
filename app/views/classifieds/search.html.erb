@@ -1,45 +1,35 @@
-  <p>Nombre d'annonces dans notre base de donnée : <%= @classifieds.count%></p>
+<div class="home-custom">
+  <div class="container">
 
-  <h1>Vous louez votre bien à la montage?</h1>
-  <h2>Visualisez les prix de tous vos concurrents sur la saison </h2>
+    <% unless @results.nil? || @results.size == 0 %>
 
-  <div class="form-group">
-    <%=form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-      <%= label_tag(:ville, "Station de ski") %>
-      <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
-      <%= submit_tag 'valider', class: "btn btn-primary" %> 
-      <%end%>
-  </div>
+      <h3><%= @search.ville.capitalize %></h3>
+      <h4><%= @search.number_of_guests %> couchages</h4>
 
-  <div class="form-group">
-    <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-      <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
-      <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
-      <%= submit_tag 'valider', class: "btn btn-primary" %>
+      <div class="form-group">
+        <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+          <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
+          <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
+          <%= submit_tag 'OK', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <%= render 'calendar' %>
+
     <% end %>
+
+    <script type="text/javascript">
+      // $('select-resort').select2();
+      $(document).ready(function() { $('#ville').select2(); });
+      $(document).ready(function() { $('#number_of_guests').select2(); });
+      // $("#select1").on('click', function(){ 
+      //   alert(ville);
+      //   return false;
+      // });
+      // $('#select1').on('click', function(){
+      //   $('.number_of_guests').toggle();
+      // });
+    </script>
+    
   </div>
-
-<hr>
-<% unless @results.nil? || @results.size == 0 %>
-
-  <h3><%= @search.ville.capitalize %></h3>
-  <h4>Capacité d'accueil : <%= @search.number_of_guests %> </h4>
-
-  
-
-  <%= render 'calendar' %>
-
-  <% end %>
-
-  <script type="text/javascript">
-    // $('select-resort').select2();
-    $(document).ready(function() { $('#ville').select2(); });
-    $(document).ready(function() { $('#number_of_guests').select2(); });
-    // $("#select1").on('click', function(){ 
-    //   alert(ville);
-    //   return false;
-    // });
-    // $('#select1').on('click', function(){
-    //   $('.number_of_guests').toggle();
-    // });
-  </script>
+</div>
