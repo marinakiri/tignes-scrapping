@@ -1,51 +1,48 @@
-<div class="container" >
+<div class="container-fluid" >
+  <%= bootstrap_devise_error_messages! %>
   <div class="row">
-    <div class=" col-md-8 offset-md-2">
-      <div class="panel panel-default devise-bs">
-        <div class="panel-heading header ">
-          <!-- <h4><% t('.sign_in', default: 'Tignes') %></h4> -->
-          <div class="row-fluid justify-content-around">
-            <div class="pull-left">
-              <h4> Tignes <span> &#8226 </span> Toutes les annonces </h4>
+    <div class="form col-md-offset-2 col-md-8">
+        <div class="form-head">
+        </div> 
+        <div class="form-body">
+          <div class="row">
+            <div class="form-body-title col-md-offset-1 col-md-10 text-center">Vous devez vous connecter pour accéder à cette fonctionnalité
             </div>
-            <div class="pull-right">
-              <h4>58 annonces </h4> 
-            </div>
-          </div>
-        </div>
-        <div class="panel-body">
-          <div class="login-box row">
-            <div>
-              <p><h5>Vous devez vous connecter pour accéder à cette fonctionnalités</h5></p>
-            </div>
-          </div>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
-            <div class="form-group col-md-4 offset-md-2">
-              <div display: hidden >
-                <%= f.label :email  %>
-              </div>  
-              <div >
-              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+            <div class="form-body-info col-md-offset-1 col-md-10">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+              <div class="form-group col-md-offset-2 col-md-8"><%= f.email_field :email, autofocus:true, class: 'form-control', placeholder: 'Email'  %>
               </div>
-            </div>
-            <div class="form-group col-md-4 offset-md-2">
-              <div display: hidden >
-                <%= f.label :password %>
+              <div class="form-group col-md-offset-2 col-md-8"><%= f.password_field :password, class: 'form-control', placeholder: 'Mot de passe' %>
               </div>
-                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Mot de passe' %>
-              </div>
-            </div>
-            <% if devise_mapping.rememberable? %>
-              <div class="checkbox">
-                <%= f.label :remember_me do %>
-                  <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Enregistrer') %>
+              <div class="btn form-group col-md-offset-2">
+                <% if devise_mapping.rememberable? %>
+                  <div class="checkbox">
+                    <%= f.label :remember_me do %>
+                      <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Enregistrer') %>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
-            <% end %>
-            <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
-          <% end %>
+              <div class="form-group col-md-offset-2 col-md-8 text-center"><%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-form' %>
+              </div>
+             </div>
+             <%end%>
+          </div>
         </div>
-      <%= render 'devise/shared/links' %>
+        <hr>
+        <div class="form-footer">
+          <div class="row">
+            <div class= "col-md-offset-1 col-md-10 text-center">
+              <div class="form-footer-title col-md-offset-2 col-md-8 text-center">Pas encore inscrit ?
+              </div>
+              <div class="form-group col-md-offset-2 col-md-8 text-center" > 
+                <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <%= link_to t('.sign_up', default: 'Créer un compte'), new_registration_path(resource_name), class: 'btn btn-form' %><br />
+                <% end %>
+              </div> 
+            </div>
+          </div>
+        </div>   
     </div>
   </div>
 </div>
