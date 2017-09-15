@@ -1,14 +1,13 @@
 /*
  *= require select2
- *= require_tree .
  *= require_self
  *= require devise_bootstrap_views
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require_tree .
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 
 $a-tags: 'a, a:active, a:hover, a:visited';
 $a-tags-hover: 'a:active, a:hover';
@@ -20,17 +19,18 @@ $a-tags-hover: 'a:active, a:hover';
 
 html, body {
 	height: 100%;
-	/*  background-color: #F5EEEE; */  
-	background: #F5EEEE url('/assets/bgd-xl.jpg') no-repeat center center;
+	  background-color: #F5EEEE;   
+	
 
 }
 
 #main {
 	height: 100%;
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-bottom: 30px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	/*border: red solid 5px;*/
 }
 
 .home-custom {
@@ -87,6 +87,13 @@ header {
 			padding: 0;
 		}
 	}
+}
+
+.container-fluid
+{
+	border: solid green 3px;
+	margin-top: 0;
+	
 }
 
 

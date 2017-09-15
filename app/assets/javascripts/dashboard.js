@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    $('#classifieds-table').DataTable();
+    $('.classifieds-table').DataTable();
   });

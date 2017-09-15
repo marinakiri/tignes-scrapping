@@ -1,21 +1,39 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div class="slideshow"> 
 
-  <% unless @results.nil? || @results.size == 0 %>
+      <h1>Vous louez votre bien à la montagne ?</h1>
+      <h2>Visualisez les prix de tous vos concurrents sur la saison</h2>
 
+      <div class="form-group">
+          <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
+            <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: "Indiquez votre station") %>
+            <%= submit_tag 'OK', class: "btn btn-primary" %> 
+          <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
     <h3><%= @search.ville.capitalize %></h3>
     <h4><%= @search.number_of_guests %> couchages</h4>
+      <div class="form-group">
+        <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+          <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
+          <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
+          <%= submit_tag 'OK', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      
+      <% unless @results.nil? || @results.size == 0 %>
+      <%= render 'calendar' %>
+  
+     <% end %>
+  
+  </div>
 
-    <div class="form-group">
-      <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-        <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
-        <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests))%>
-        <%= submit_tag 'OK', class: "btn btn-primary" %>
-      <% end %>
-    </div>
-
-    <%= render 'calendar' %>
-
-  <% end %>
+</div>
 
   <script type="text/javascript">
     // $('select-resort').select2();
@@ -29,5 +47,3 @@
     //   $('.number_of_guests').toggle();
     // });
   </script>
-  
-</div>
