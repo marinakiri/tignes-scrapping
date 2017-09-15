@@ -1,10 +1,14 @@
-<div class="container border-form-div">
+<div class="container">
   <%= bootstrap_devise_error_messages! %>
   <div class="panel panel-default devise-bs">
     <div class="panel-heading">
       <h4><%= t('.sign_up', default: 'Sign up') %></h4>
     </div>
     <div class="panel-body">
+      <div class="login-box row">
+        <div>
+          <p>Vous devez vous connecter pour accéder à cette fonctionnalités</p>
+        </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form' }) do |f| %>
         <div class="form-group">
           <%= f.label :email %>

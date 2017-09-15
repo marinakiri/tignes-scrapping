@@ -1,28 +1,51 @@
-<div class="container col-md-8 offset-md-2 border-form-div">
-  <div class="panel panel-default devise-bs">
-    <div class="panel-heading">
-      <h4><%= t('.sign_in', default: 'Tignes') %></h4>
-    </div>
-    <div class="panel-body">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-        </div>
-        <% if devise_mapping.rememberable? %>
-          <div class="checkbox">
-            <%= f.label :remember_me do %>
-              <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Remember me') %>
-            <% end %>
+<div class="container" >
+  <div class="row">
+    <div class=" col-md-8 offset-md-2">
+      <div class="panel panel-default devise-bs">
+        <div class="panel-heading header ">
+          <!-- <h4><% t('.sign_in', default: 'Tignes') %></h4> -->
+          <div class="row-fluid justify-content-around">
+            <div class="pull-left">
+              <h4> Tignes <span> &#8226 </span> Toutes les annonces </h4>
+            </div>
+            <div class="pull-right">
+              <h4>58 annonces </h4> 
+            </div>
           </div>
-        <% end %>
-        <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
-      <% end %>
+        </div>
+        <div class="panel-body">
+          <div class="login-box row">
+            <div>
+              <p><h5>Vous devez vous connecter pour accéder à cette fonctionnalités</h5></p>
+            </div>
+          </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+            <div class="form-group col-md-4 offset-md-2">
+              <div display: hidden >
+                <%= f.label :email  %>
+              </div>  
+              <div >
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+              </div>
+            </div>
+            <div class="form-group col-md-4 offset-md-2">
+              <div display: hidden >
+                <%= f.label :password %>
+              </div>
+                <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Mot de passe' %>
+              </div>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="checkbox">
+                <%= f.label :remember_me do %>
+                  <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Enregistrer') %>
+                <% end %>
+              </div>
+            <% end %>
+            <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      <%= render 'devise/shared/links' %>
     </div>
   </div>
-  <%= render 'devise/shared/links' %>
 </div>
