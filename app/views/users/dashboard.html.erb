@@ -30,6 +30,8 @@
 
 <!-- End of initialization for calendar -->
 
+<% unless @subscriptions.nil? || @subscriptions.size == 0 %>
+
 <h2>Détail par station</h2>
 
 <% @subscriptions.each do |s| %>
@@ -42,6 +44,12 @@
 
   <h3><%= s.resort.ville.capitalize %></h3>
   <h4>Capacité d'accueil : <%= number_of_guests %></h4>
+
+<!-- Number of classifieds used to generate result -->
+<% selected_classifieds = @classifieds.where(resort_id:s.resort_id).order('start_date') %>
+<div>
+  <%= selected_classifieds.count %> annonces
+</div>
 
 <!-- Calendar -->
 
@@ -73,8 +81,36 @@
 
 <!-- end of calendar -->
 
+<!-- The table of data -->
+
+
+<table class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Semaine</th>
+      <th>Prix</th>
+      <th>Nom de l'annonce</th>
+      <th>Code annonce</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% selected_classifieds.each do |sc| %>
+    <tr>
+      <td><%= sc.start_date.mday%>-<%= sc.start_date.mon%>-<%=sc.start_date.year %></td>
+      <td><%= (sc.price*7).round %>€</td>
+      <td><a href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
+      <td><%= sc.abritel_classified_id%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!-- End of the table of data -->
+
   <hr>
 <%end%>
+
+<% end %>
 
 
 
@@ -84,18 +120,6 @@
     <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
     <%= submit_tag "s'abonner à cette station", class: "btn btn-primary" %>
   <% end %>
-
-
-
- 
-
-
-
-
-
-
-
-
 
 
 

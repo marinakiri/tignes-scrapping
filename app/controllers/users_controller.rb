@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end
 
     @subscriptions = Subscription.all
+    @classifieds = Classified.all
     @averages = Classified.group("ville").group("start_date").group("number_of_guests").average("price")
     @number_of_guests = params[:number_of_guests]
   end

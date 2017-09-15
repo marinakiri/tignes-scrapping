@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.slideshow
+{
+  border: solid blue 3px;
+  height:300px;
+  /*background-color: red; */
+  background-size: contain;
+  background-image: url('/assets/bgd-xl.jpg');
+  /*no-repeat center center*/
+}
+
 .calendar
 {
   text-align: center;
