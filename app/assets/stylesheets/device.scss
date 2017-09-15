@@ -1,0 +1,51 @@
+/*div {
+    border: 1px solid blue;
+    box-sizing: border-box;
+}*/
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.container-fluid{
+ /* background-color: violet;*/
+  margin-top: 20px;
+}
+.form {
+  background-color: white;
+}
+.form-head {
+/*  background-color: yellow;*/
+  /*padding: 15px;*/
+}
+
+/* form-body */
+
+.form-body {
+ /* background-color: red;
+  padding: 15px;*/
+}
+
+.form-body-title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-footer {
+ /* background-color: green;
+  padding: 15px;*/
+}
+
+.form-footer-title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-form {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #AC4D78;
+  color: #FFFFFF;
+}
