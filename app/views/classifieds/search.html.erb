@@ -46,7 +46,7 @@
         <div class="col-md-offset-1 col-md-10">
           <div class="form-group">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-              <%= label_tag(:number_of_guests, "Nombre de couchages :") %>
+              <%= label_tag(:number_of_guests, "Nombre de personnes dans l'appartement :") %>
               <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests),prompt: number_prompted)%>
               <%= submit_tag 'OK', class: "btn btn-primary" %>
             <% end %>

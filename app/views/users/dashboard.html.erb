@@ -1,6 +1,8 @@
 <div class="container-fluid">
+<div class="row">
+  <div class="search-results col-md-offset-2 col-md-8 margin-top-extra">
 
-  <h1>Veille concurrentielle</h1>
+  <h1>Bienvenue sur votre tableau de bord</h1>
 
   <% if user_signed_in? %>
     <p>Les stations de ski auxquelles vous êtes abonné</p>
@@ -12,7 +14,28 @@
       </div>
       </div>
     <% end %>
-  </div>
+    </div>
+
+    <hr>
+    <p>Si vous souhaitez vous abonnez à une nouvelle station :</p>
+
+    <%=form_tag({controller: 'users', action: 'dashboard'}, method: :get) do %>
+      <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
+      <%= submit_tag "s'abonner à cette station", class: "btn btn-primary" %>
+    <% end %>
+
+   <% else %>
+    Veuillez vous connecter pour accéder à l'outil professionnel :
+    <ul>
+      <li><%= link_to "Log in", new_user_session_path, :class => 'navbar-link'  %>, si vous avez déjà un compte,
+      </li>
+      <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>, pour vous inscrire !
+      </li>  
+    </ul> 
+  <%end%>
+
+</div>
+</div>
 
   <!-- Formulaire pour déterminer le nombre de personnes -->
   <h2>Capacité d'accueil cible</h2>
@@ -44,48 +67,67 @@
       <% number_of_guests = 4 %> <!-- Changer la façon d'initialiser pour le faire sur quelque chose qui existe -->
     <% end%>
 
-    <h3><%= s.resort.ville.capitalize %></h3>
-    <h4>Capacité d'accueil : <%= number_of_guests %></h4>
+<div class="row">
+    <div class="search-results col-md-offset-2 col-md-8">
+    <% selected_classifieds = @classifieds.where(resort_id:s.resort_id).order('start_date') %>
+      <div class="search-results-header">
+        <h3><%= s.resort.ville.capitalize %></h3>
+        <h4> <%= selected_classifieds.count %> annonces</h4>
+      </div>
 
-  <!-- Number of classifieds used to generate result -->
-  <% selected_classifieds = @classifieds.where(resort_id:s.resort_id).order('start_date') %>
-  <div>
-    <%= selected_classifieds.count %> annonces
+  <div class="row search-results-nb-guests">
+  <div class="col-md-offset-1 col-md-10">
+    <h4>Nombre de personnes dans l'appartement : <%= number_of_guests %></h4> <!-- a changer pour avoir un menu déroulant -->
   </div>
+  </div>
+
 
   <!-- Calendar -->
-
-  <div class="container">
-    <% 6.times do |j| %>
-      <div class="col-md-2">
-        <div class="average-price-box col-xs-12 calendar month">
-          <%= month_list[j].capitalize %>
-        </div>
-        <% 4.times do |i| %>
-        <div class="average-price-box col-xs-12 calendar">
-          <% current_date = starting_date + (i+j*4)*7 %>
-          <div class="date">
-            <%= "#{current_date.mday}-#{(current_date+7).mday}" %>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <div>
+        <% 6.times do |j| %>
+          <div class="col-md-2 col-calendar">
+            <div class="col-xs-12 calendar month">
+              <%= month_list[j].capitalize %>
+            </div>
+            <% 4.times do |i| %>
+            <div class="average-price-box col-xs-12 calendar">
+              <% current_date = starting_date + (i+j*4)*7 %>
+              <div class="date">
+                <div class="mini-date start-date">
+                  <p>Sa</p>
+                  <p><span class="bold"><%= "#{current_date.mday}" %></span></p>
+                </div>
+                <div class="mini-date end-date">
+                  <p>Sa</p>
+                  <p><span class="bold"><%= "#{(current_date+7).mday}" %></span></p>
+                </div>
+              </div>
+              <div class="price">
+                <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]] != nil %>
+                  <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]]*(frequency)).round %>
+                 €
+                <p>7 jours</p>
+              <% else %>
+                -
+              <% end %>
+            </div>
           </div>
-          <div class="price">
-            <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]] != nil %>
-              <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]]*(frequency)).round %>
-              €
-            <% else %>
-              -
-            <% end %>
+          <% end %>
           </div>
-        </div>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
-  <!-- end of calendar -->
+<!-- end of calendar -->
 
-  <!-- The table of data -->
+<!-- The table of data -->
 
-
+<div class="row">
+<div class="col-md-offset-1 col-md-10">
+<h3>Table détaillée des résultats</h3>
   <table class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -106,8 +148,16 @@
     <% end %>
     </tbody>
   </table>
+</div>
+</div>
 
   <!-- End of the table of data -->
+
+
+</div>
+</div>
+
+  
 
     <hr>
   <%end%>
@@ -116,24 +166,7 @@
 
 
 
-    <p>Si vous souhaitez vous abonnez à une nouvelle station :</p>
-
-    <%=form_tag({controller: 'users', action: 'dashboard'}, method: :get) do %>
-      <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
-      <%= submit_tag "s'abonner à cette station", class: "btn btn-primary" %>
-    <% end %>
-
-
-
-   <% else %>
-    Veuillez vous connecter pour accéder à l'outil professionnel :
-    <ul>
-      <li><%= link_to "Log in", new_user_session_path, :class => 'navbar-link'  %>, si vous avez déjà un compte,
-      </li>
-      <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>, pour vous inscrire !
-      </li>  
-    </ul> 
-  <%end%>
+    
 
 </div>
 
