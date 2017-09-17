@@ -1,6 +1,5 @@
 .margin-top-extra
 {
-  margin-top: 60px;
   h1
   {
     text-align: center;
@@ -57,4 +56,14 @@
   cursor:pointer;
 }
 
-
+.search-results-dashboard
+{
+  background-color: white;
+  margin-top: 60px;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  box-shadow: 0px 3px 3px lightgrey;
+}

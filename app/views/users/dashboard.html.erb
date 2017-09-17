@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" id="list-of-resorts">
 <div class="row">
   <div class="search-results col-md-offset-2 col-md-8 margin-top-extra">
 
@@ -12,11 +12,16 @@
     <div class="col-md-offset-1 col-md-10">
       <% @subscriptions.each do |s| %>
       <div class="col-md-3">
-        <div class="station-bloc col xs-11">
-          <div class='col-md-offset-10' ><%= link_to "x", "/subscriptions/#{s.id}", method: :delete %> </div>
-          <h2><%= s.resort.ville.capitalize %></h2>
-          <div><%= @classifieds.where(resort_id:s.resort_id).count %> annonces</div>
-        </div>
+        
+          <div class="station-bloc col xs-11">
+            <div class='col-md-offset-10' ><%= link_to "x", "/subscriptions/#{s.id}", method: :delete %> </div>
+           <%= link_to dashboard_path(anchor: s.resort.ville) do %>
+            <h2> <%= s.resort.ville.capitalize%> </h2>
+            <% end %>
+            <div><%= @classifieds.where(resort_id:s.resort_id).count %> annonces
+            </div>
+          </div>
+        
       </div>
     <% end %>
 
@@ -62,14 +67,17 @@
       <% number_of_guests = 4 %> <!-- Changer la façon d'initialiser pour le faire sur quelque chose qui existe -->
     <% end%>
 
-<div class="row">
-    <div class="search-results col-md-offset-2 col-md-8">
+<div class="row" id="<%=s.resort.ville_url%>">
+    <div class="search-results-dashboard col-md-offset-2 col-md-8">
     <% selected_classifieds = @classifieds.where(resort_id:s.resort_id) %>
       <div class="search-results-header">
         <h3><%= s.resort.ville.capitalize %></h3>
         <h4> <%= selected_classifieds.count %> annonces</h4>
       </div>
 
+  <%= link_to dashboard_path(anchor: "list-of-resorts") do %>
+    <div class="col-md-offset-8 col-md-4 return-top">Revenir au tableau de bord</div>
+  <% end %>
   
   <!-- Afficher le nombre de guests dans un formulaire -->
    <!-- To be prompted for number_of_guests -->
