@@ -64,7 +64,7 @@
 
 <div class="row">
     <div class="search-results col-md-offset-2 col-md-8">
-    <% selected_classifieds = @classifieds.where(resort_id:s.resort_id).order('start_date') %>
+    <% selected_classifieds = @classifieds.where(resort_id:s.resort_id) %>
       <div class="search-results-header">
         <h3><%= s.resort.ville.capitalize %></h3>
         <h4> <%= selected_classifieds.count %> annonces</h4>
@@ -73,7 +73,8 @@
   
   <!-- Afficher le nombre de guests dans un formulaire -->
    <!-- To be prompted for number_of_guests -->
-      <% list_of_number_of_guests2 = selected_classifieds.order('number_of_guests').group('number_of_guests').pluck('number_of_guests') %>
+      <% list_of_number_of_guests2 = selected_classifieds.group('number_of_guests').pluck('number_of_guests') %>
+      <% list_of_number_of_guests2 = list_of_number_of_guests2.sort %>
       <!-- End of to be prompted for number_of_guests -->
 
       <div class="row search-results-nb-guests">
