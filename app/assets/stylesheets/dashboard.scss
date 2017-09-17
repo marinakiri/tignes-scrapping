@@ -4,7 +4,57 @@
   h1
   {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    margin-bottom: 15px;
   }
 }
+
+.not-subscribed
+{
+  text-align: center;
+}
+
+
+.station-bloc
+{
+/*  text-align: center;
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 3px;
+  line-height: 40px;
+  text-align: center;*/
+
+  text-align: center;
+  height: 80px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px lightgrey;
+  h2
+  {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0;
+    padding-top:0;
+  }
+  a
+  {
+    color:lightgrey;
+  }
+  a:hover
+  {
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+  }
+}
+
+.station-bloc:hover
+{
+  box-shadow: 2px 5px 5px grey;
+  cursor:pointer;
+}
+
 
