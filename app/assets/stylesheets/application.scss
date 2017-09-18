@@ -9,6 +9,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "cookies_eu";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&subset=latin-ext');
 
 $a-tags: 'a, a:active, a:hover, a:visited';
@@ -22,8 +24,6 @@ $a-tags-hover: 'a:active, a:hover';
 html, body {
 	height: 100%;
 	background-color: #F5EEEE;   
-
-
 }
 
 body
@@ -37,7 +37,6 @@ body
 	margin-bottom: 30px;
 	padding-top: 50px;
 	padding-bottom: 0;
-	/*border: red solid 5px;*/
 }
 
 .home-custom {
@@ -118,7 +117,20 @@ header {
 	margin-bottom: 0;
 }
 
+.contact-info {
+	a {
+		padding-left: 5px;
+	}
 
+	#{$a-tags} {
+		color: #AC4D78;
+		text-decoration: none;
+	}
+
+	#{$a-tags-hover} {
+		color: #ccc;
+	}
+}
 
 /*table, td, th { 
 	vertical-align: middle; 
