@@ -115,7 +115,14 @@ header {
 
 .btn-primary
 {
-	background-color:rgb(26,10,36);
+	background-color:#1D0826;
+	color: white;
+	border: white;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited
+{
+	background-color: #9D2041;
 	color: white;
 	border: white;
 }
