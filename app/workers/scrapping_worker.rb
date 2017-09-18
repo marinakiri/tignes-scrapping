@@ -29,8 +29,19 @@ class ScrappingWorker
         Sidekiq.logger.info "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-Scrapping page #{page}-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"
         get_data_from_json(date, json)
 
-        break if page >= json['results']['pageCount'] || page >= 15
-        page += 1
+        # break if (page > 5 && page >= json['results']['pageCount'] ) || page >= 15
+        if page >= 15
+          Sidekiq.logger.info "================================already visited 15 pages, so quit the loop================================"
+          break
+        elsif page > 5
+          if page >= json['results']['pageCount']
+            Sidekiq.logger.info "================================already visited 5 pages, and page count seems lower so quit the loop================================"
+            break
+          end
+        else
+          page += 1  
+        end
+
       end
     end
 
@@ -43,8 +54,8 @@ class ScrappingWorker
     search_results = results_json['results']['hits']
 
     search_results.each do |r|
-      if r['averagePrice'] && r['headline'] && r['detailPageUrl'] && r["geography"]["ids"][1]
-        if Classified.find_by(abritel_classified_id: r["listingId"], start_date: date)
+      if r['averagePrice'] && r['headline'] && r['detailPageUrl']
+        if Classified.find_by(link: r["detailPageUrl"], start_date: date)
           @double += 1
           Sidekiq.logger.info "------------------!!! already in database !!!------------------"
           next
@@ -65,18 +76,24 @@ class ScrappingWorker
             region:                 geography[1],
             departement:            geography[2],
             ville:                  geography[3],
-            quartier:               geography[4],
-            region_number:          r["geography"]["ids"][1]["value"] 
+            quartier:               geography[4]
         )
         
-        if Resort.find_by_region_number(c['region_number'])
-            c.resort = Resort.find_by_region_number(c['region_number'])
-          else
-            Resort.create(region_number:c['region_number'],ville:c['ville'],ville_url:URI.escape(c['ville']))
-            c.resort = Resort.last
-            Sidekiq.logger.info "-*-*-*-New Resort created-*-*-*-"
+        # Region number management : create a Resort if not yet in DB and we have r["geography"]["ids"][1]
+        current_resort = Resort.find_by_ville(c.ville) 
+        if current_resort
+          c.resort = current_resort
+          c.save
+          Sidekiq.logger.info "-*-*-*-Resort could be found with ville-*-*-*-"
+        elsif r["geography"]["ids"][1]
+          Resort.create(region_number:r["geography"]["ids"][1]["value"],ville:c['ville'],ville_url:URI.escape(c['ville']))
+          Sidekiq.logger.info "-*-*-*-New Resort created-*-*-*-"
+          c.resort = Resort.last
+          c.save
+        else
+          Sidekiq.logger.info "-*-*-*-Cannot record because can't link Classified with a Resort-*-*-*-"
         end
-        c.save
+
     end
   end
   end
