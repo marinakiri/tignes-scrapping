@@ -54,7 +54,8 @@
 {
   /*box-shadow: -5 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);*/
   /*-webkit-transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;*/
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  translateY(-5px) translateZ(0) */
   cursor:pointer;
 }
 
