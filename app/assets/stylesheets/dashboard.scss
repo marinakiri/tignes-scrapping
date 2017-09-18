@@ -31,23 +31,23 @@
   border: 1px solid lightgrey;
   border-radius: 2px;
   box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
-  h2
-  {
-    font-size: 1em;
-    font-weight: bold;
-    margin-top: 0;
-    padding-top:0;
-  }
-  a
-  {
-    color:lightgrey;
-  }
-  a:hover
-  {
-    text-decoration: none;
-    color:black;
-    font-weight: bold;
-  }
+
+  h2 {
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 0;
+      padding-top:0;
+    }
+
+  a {
+      color:lightgrey;
+    }
+
+  a:hover {
+      text-decoration: none;
+      color:black;
+      font-weight: bold;
+    }
 }
 
 .station-bloc:hover

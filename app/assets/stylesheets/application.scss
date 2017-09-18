@@ -140,9 +140,8 @@ header {
 }
 
 .view-demo {
+	display: block;
 	margin: auto;
-	margin-top: 70px;
-	margin-bottom: 50px;
 	width: 180px;
 	height: 30px;
 	line-height: 30px;
@@ -151,22 +150,19 @@ header {
 	background: rgba(246,249,252,.8);
 	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
 	font-size: 18px;
+	color: #AC4D78;
+	text-decoration: none;
 
 	.fa {
 		margin-left: 5px;
 	}
 }
 
-#{$a-tags} .view-demo {
-	color: #AC4D78;
-	text-decoration: none;
-}
-
-#{$a-tags-hover} .view-demo {
+.view-demo:hover {
 	color: #1D0826;
+	text-decoration: none;
 	background: rgba(246,249,252,.9);
 	transform: translateY(-5px) translateZ(0);
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	box-shadow: -5 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
-
 }
