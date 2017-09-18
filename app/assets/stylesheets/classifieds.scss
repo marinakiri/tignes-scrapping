@@ -2,6 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+<<<<<<< HEAD
+=======
+.slideshow
+{ 
+  height:800px;
+  margin-top: 0;
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-image: url('/assets/bgd-xl.jpg');
+}
+
+.slideshow-text
+{
+  position:relative;
+  height: 200px;
+  padding-top:200px;
+  margin-bottom:auto;
+}
+
+.slideshow-h1
+{
+  color:white;
+  font-weight: bold;
+  font-size:3.5em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+.slideshow-h2
+{
+  color:white;
+  font-size:2em;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+.demo-box {
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 2px solid red;
+}
+
+.station-search
+{
+  text-align: center;
+}
+
+.select-resort
+{
+  width:300px;
+  height: 32px;
+  line-height:32px;
+}
+>>>>>>> 94b9fb58438d9638f2452981c05eaa357e6b81aa
 
 /*.ok-btn {
   margin-left: -5px;

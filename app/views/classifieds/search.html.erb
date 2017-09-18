@@ -1,44 +1,84 @@
 <div class="container-fluid">
-
-<% unless @search.ville.nil? %>
+<<<<<<< HEAD
+=======
   <div class="row">
-    <div class="search-results col-md-offset-2 col-md-8">
-    
-      <div class="search-results-header">
-        <h3><%= @search.ville.capitalize %></h3>
-        <h4><%= @results.count %> annonces</h4>
-      </div>
+    <div class="slideshow"> 
+      <div class="slideshow-text col-md-offset-1 col-md-10">
+        
+        <h1 class="slideshow-h1">Vous louez un bien à la montagne ?</h1>
+        <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
+        <br>
 
-      <!-- To be prompted for number_of_guests -->
-      <% if @search.number_of_guests == nil %>
-        <% number_prompted = "❄︎" %>
-      <% else %>
-        <% number_prompted = @search.number_of_guests %>
-      <% end %>
-      <!-- End of to be prompted for number_of_guests -->
+        <!-- To be prompted for stations -->
+        <% if @search.ville == nil %>
+          <% station_prompted = "Indiquez votre station" %>
+        <% else %>
+          <% station_prompted = @search.ville %>
+        <% end %>
+        <!-- End of to be prompted for stations -->
 
-      <div class="row search-results-nb-guests">
-        <div class="col-md-offset-1 col-md-10">
-          <div class="form-group">
-            <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-              <%= label_tag(:number_of_guests, "Nombre de personnes dans l'appartement :") %>
-              <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests),prompt: number_prompted)%>
-              <%= submit_tag 'OK', class: "btn btn-primary" %>
-            <% end %>
-          </div>
+        <div class="form-group station-search">
+            <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
+              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
+              <%= submit_tag 'OK', class: "ok-btn btn btn-primary" %> 
+            <% end %>          
         </div>
+
+          <a class="view-demo" href="#demo-box">
+              Voir la démo
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
+          </a>
+
       </div>
-      
-      <div class="row">
-        <% unless @results.nil? || @results.size == 0 %>
-        <div class="col-md-offset-1 col-md-10">
-          <%= render 'calendar' %>
-        </div>
-       <% end %>
-     </div>
     </div>
   </div>
-<% end %>
+>>>>>>> 94b9fb58438d9638f2452981c05eaa357e6b81aa
+
+  <div class="row">
+    <div id="demo-box" class="demo-box">
+      <%= render 'demo' %>
+    </div>
+  </div>
+
+  <% unless @search.ville.nil? %>
+    <div class="row">
+      <div class="search-results col-md-offset-2 col-md-8">
+      
+        <div class="search-results-header">
+          <h3><%= @search.ville.capitalize %></h3>
+          <h4><%= @results.count %> annonces</h4>
+        </div>
+
+        <!-- To be prompted for number_of_guests -->
+        <% if @search.number_of_guests == nil %>
+          <% number_prompted = "❄︎" %>
+        <% else %>
+          <% number_prompted = @search.number_of_guests %>
+        <% end %>
+        <!-- End of to be prompted for number_of_guests -->
+
+        <div class="row search-results-nb-guests">
+          <div class="col-md-offset-1 col-md-10">
+            <div class="form-group">
+              <%= form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
+                <%= label_tag(:number_of_guests, "Nombre de personnes dans l'appartement :") %>
+                <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests),prompt: number_prompted)%>
+                <%= submit_tag 'OK', class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <% unless @results.nil? || @results.size == 0 %>
+            <div class="col-md-offset-1 col-md-10">
+              <%= render 'calendar' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 
 </div>

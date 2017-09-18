@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   get 'customers/show'
 
-  get 'pages/home'
-
   devise_for :users
   resources :classifieds
   get '/search', to: 'classifieds#search'
