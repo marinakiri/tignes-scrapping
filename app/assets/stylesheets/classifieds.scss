@@ -28,7 +28,7 @@
 .slideshow-h1
 {
   color:white;
-  font-weight: bold;
+  font-weight: bold !important;
   font-size:4em;
   text-shadow: 0px 2px 2px black;
   text-align: center;
@@ -179,7 +179,7 @@
 .price
 {
   font-size: 1.2em;
-  font-weight: 3000;
+  font-weight: bold;
   align-content: center;
   width:75%;
   height: 20%;
@@ -195,5 +195,6 @@
     font-size: 0.8em;
     line-height: 0;
     font-style: italic;
+    font-weight: normal;
   }
 }
