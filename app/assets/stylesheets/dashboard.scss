@@ -30,7 +30,7 @@
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 2px;
-  box-shadow: 0px 2px 2px lightgrey;
+  box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
   h2
   {
     font-size: 1em;
@@ -52,7 +52,9 @@
 
 .station-bloc:hover
 {
-  box-shadow: 2px 5px 5px grey;
+  /*box-shadow: -5 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);*/
+  /*-webkit-transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;*/
   cursor:pointer;
 }
 
@@ -65,5 +67,5 @@
   padding-right: 0;
   padding-bottom: 40px;
   margin-bottom: 20px;
-  box-shadow: 0px 3px 3px lightgrey;
+  box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
 }

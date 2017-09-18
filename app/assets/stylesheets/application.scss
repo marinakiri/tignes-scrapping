@@ -131,3 +131,26 @@ header {
 		color: #ccc;
 	}
 }
+
+.view-demo {
+	margin: auto;
+	margin-top: 70px;
+	margin-bottom: 50px;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 4px;
+	background: rgba(246,249,252,.9);
+	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+	font-size: 18px;
+	
+	#{$a-tags} {
+		color: #AC4D78;
+		text-decoration: none;
+	}
+
+	#{$a-tags-hover} {
+		color: #ccc;
+	}
+}

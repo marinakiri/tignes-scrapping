@@ -5,6 +5,7 @@
         
         <h1 class="slideshow-h1">Vous louez un bien à la montagne ?</h1>
         <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
+        <br>
 
         <!-- To be prompted for stations -->
         <% if @search.ville == nil %>
@@ -18,9 +19,17 @@
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
               <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
               <%= submit_tag 'OK', class: "btn btn-primary" %> 
-            <% end %>
-          
+            <% end %>          
         </div>
+
+        <a href="#">
+          <div class="view-demo">
+            <a href="">
+              Voir la démo
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </a>
+          </div>
+
       </div>
     </div>
   </div>
