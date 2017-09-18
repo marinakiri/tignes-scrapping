@@ -30,14 +30,12 @@ class ScrappingWorker
         get_data_from_json(date, json)
 
         # break if (page > 5 && page >= json['results']['pageCount'] ) || page >= 15
-        if page >= 15
-          Sidekiq.logger.info "================================already visited 15 pages, so quit the loop================================"
+        if page > 5
+          Sidekiq.logger.info "================================already visited 5 pages, so quit the loop================================"
           break
-        elsif page > 5
-          if page >= json['results']['pageCount']
-            Sidekiq.logger.info "================================already visited 5 pages, and page count seems lower so quit the loop================================"
-            break
-          end
+        elsif page >= json['results']['pageCount']
+          Sidekiq.logger.info "================================page count from json seems lower so quit the loop================================"
+          break
         else
           page += 1  
         end
