@@ -77,6 +77,7 @@ header {
 	width: 100%;
 	clear: both;
 	position: relative;
+	bottom:0;
 	height: 30px;
 	margin-top: -30px;
 
@@ -142,7 +143,7 @@ header {
 .view-demo {
 	display: block;
 	margin: auto;
-	margin-top: 70px;
+	margin-top: 30px;
 	width: 180px;
 	height: 30px;
 	line-height: 30px;

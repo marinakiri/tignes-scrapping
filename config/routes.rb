@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :classifieds
   get '/search', to: 'classifieds#search'
   
-  root 'classifieds#search'
+  # root 'classifieds#search'
+  root 'pages#home'
 
   get 'stations/show'
 

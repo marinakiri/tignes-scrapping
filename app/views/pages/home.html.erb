@@ -7,30 +7,64 @@
         <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
         <br>
 
-        <!-- To be prompted for stations -->
-        <% if @search.ville == nil %>
-          <% station_prompted = "Indiquez votre station" %>
-        <% else %>
-          <% station_prompted = @search.ville %>
-        <% end %>
-        <!-- End of to be prompted for stations -->
-
         <div class="form-group station-search">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
-              <%= submit_tag 'OK', class: "ok-btn btn btn-primary" %> 
+              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
+              <%= submit_tag 'tester', class: "ok-btn btn btn-primary" %> 
             <% end %>          
+            <!-- ok-btn btn btn-primary -->
         </div>
-
-          <a class="view-demo" href="#">
-              Voir la démo
-              <i class="fa fa-arrow-down" aria-hidden="true"></i>
-          </a>
-
       </div>
     </div>
   </div>
 
+<div class="row">
+  <div class="col-md-offset-2 col-md-2 search-results homepage">
+    <div class="col-md-offset-1 col-md-10">
+      <h2>Mise en location</h2>
+      <p><i class="fa fa-question icon-big" aria-hidden="true"></i></p>
+      <p>A quel prix dois-je mettre l'appartement pour le louer ?</p>
+    </div>
+  </div>
+  <div class="col-md-offset-1 col-md-2 search-results homepage">
+    <div class="col-md-offset-1 col-md-10">
+      <h2>Pendant la saison</h2>
+      <p><i class="fa fa-calendar-plus-o icon-big" aria-hidden="true"></i></p>
+      <p>Je n'ai pas encore loué, suis-je trop cher ? Est-ce que c'est normal?</p>
+    </div>
+  </div>
+  <div class="col-md-offset-1 col-md-2 search-results homepage">
+    <div class="col-md-offset-1 col-md-10">
+      <h2>Après la location</h2>
+      <p><i class="fa fa-star icon-big" aria-hidden="true"></i></p>
+      <p>Puis-je faire mieux l'année prochaine ? Comment?</p>
+    </div>
+  </div>
+</div>
 
+  <div class="row">
+      <div class="slideshow-smaller">
+        <div class="col-md-offset-7 col-md-4 containing-pluses">
+        <div class="box-in-box">
+          <h3><i class="fa fa-plus" aria-hidden="true"></i> Louer plus cher</h3>
+          <h3><i class="fa fa-plus" aria-hidden="true"></i> Louer plus souvent</h3>
+        </div>
+        </div>
+      </div> 
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 search-results homepage">
+      <h2><%=@classifieds.count%> annonces</h2>
+      <p>Dans notre base de données</p>
+      <p>pour comparer vos prix avec la concurrence</p>
+      <p>à disposition pour vous, gratuitement!</p>
+      <p>(pour l'instant)</p>
+      <a class="view-demo" href="dashboard">
+          Tester
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
 
 </div>

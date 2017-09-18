@@ -1,35 +1,4 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="slideshow"> 
-      <div class="slideshow-text col-md-offset-1 col-md-10">
-        
-        <h1 class="slideshow-h1">Vous louez un bien à la montagne ?</h1>
-        <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
-        <br>
-
-        <!-- To be prompted for stations -->
-        <% if @search.ville == nil %>
-          <% station_prompted = "Indiquez votre station" %>
-        <% else %>
-          <% station_prompted = @search.ville %>
-        <% end %>
-        <!-- End of to be prompted for stations -->
-
-        <div class="form-group station-search">
-            <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
-              <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
-              <%= submit_tag 'OK', class: "ok-btn btn btn-primary" %> 
-            <% end %>          
-        </div>
-
-          <a class="view-demo" href="#">
-              Voir la démo
-              <i class="fa fa-arrow-down" aria-hidden="true"></i>
-          </a>
-
-      </div>
-    </div>
-  </div>
 
 <% unless @search.ville.nil? %>
   <div class="row">
@@ -70,5 +39,6 @@
     </div>
   </div>
 <% end %>
+
 
 </div>

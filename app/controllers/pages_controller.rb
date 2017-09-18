@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def home
+    @classifieds = Classified.all
   end
 
   def about
