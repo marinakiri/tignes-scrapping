@@ -22,3 +22,10 @@ module ApplicationHelper
       return Classified.where(ville:@search.ville).group("number_of_guests").count.keys
   end
 end
+
+# def titleize(x)
+#   little = ["les", "d", "sur", "de"]
+#   x = x.split.each { |s| s.capitalize! unless little.include?(s) } # transforme le titre en array, puis capitalise chaque élément sauf les petits mots
+#   x[0].capitalize!
+#   x = x * " "
+# end

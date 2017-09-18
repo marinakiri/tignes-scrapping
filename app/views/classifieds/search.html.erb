@@ -18,7 +18,7 @@
         <div class="form-group station-search">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
               <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort', prompt: station_prompted) %>
-              <%= submit_tag 'OK', class: "btn btn-primary" %> 
+              <%= submit_tag 'OK', class: "ok-btn btn btn-primary" %> 
             <% end %>          
         </div>
 
