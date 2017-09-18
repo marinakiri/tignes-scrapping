@@ -23,3 +23,38 @@
 $(document).ready(function() {
     $('.classifieds-table').DataTable();
   });
+
+
+$(document).ready(function() { $('#ville').select2(); });
+// $(document).ready(function() { $('#number_of_guests').select2(); });
+
+
+// $(document).ready(function() {
+//     $('select[name="number_of_guests"]').change(function(){
+      
+//        $(this).filter(":selected").each(function(){
+//         alert('clicked');
+//       });
+      
+//     }
+//       ).trigger( "change" );
+//     });
+
+$(document).ready(function() {
+  $( "select" ).change(function() {
+    $( "select option:selected" ).each(function() {
+    });
+    alert( 'clicked' );
+  })
+  .trigger( "change" );
+});
+
+// $('select[name="number_of_guests"]').change(function(){
+//       $(this).children('*').click(function(){
+//         alert('clicked');
+//       })
+//     }
+//       )
+//     });
+
+// .filter(":selected")
