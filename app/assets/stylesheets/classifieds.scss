@@ -6,15 +6,9 @@
 { 
   height:800px;
   margin-top: 0;
-  /*background-color: red; */
-  /*background-size: contain;*/
   background-position: center; 
   background-repeat: no-repeat;
-/*  background-size: 100%;
-*/  background-image: url('/assets/bgd-xl.jpg');
-
-
-  /*no-repeat center center*/
+  background-image: url('/assets/bgd-xl.jpg');
 }
 
 .slideshow-text
@@ -28,7 +22,7 @@
 .slideshow-h1
 {
   color:white;
-  font-weight: bold !important;
+  font-weight: bold;
   font-size:3.5em;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   text-align: center;
@@ -40,6 +34,13 @@
   font-size:2em;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.demo-box {
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 2px solid red;
 }
 
 .station-search
