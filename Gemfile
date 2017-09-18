@@ -25,6 +25,8 @@ gem 'sidekiq'
 gem 'devise-bootstrap-views'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'cookies_eu'
+gem 'font-awesome-sass'
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
