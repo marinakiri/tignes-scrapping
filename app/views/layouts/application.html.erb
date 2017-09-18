@@ -11,9 +11,6 @@
 	    <%= favicon_link_tag 'favicon.ico' %>
 
 	    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
-	    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
-	    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-	    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 	    
 	</head>
 
@@ -32,31 +29,8 @@
 		<!-- </div> -->
 		
 		<%= render 'layouts/footer' %>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  	<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+		<%= render 'cookies_eu/consent_banner' %>
   	
-		<!-- Cookie consent plugin from Insight -->
-		<script>
-		    window.addEventListener("load", function(){
-		    window.cookieconsent.initialise({
-		      "palette": {
-		        "popup": {
-		          "background": "#edeff5",
-		          "text": "#838391"
-		        },
-		        "button": {
-		          "background": "#4b81e8"
-		        }
-		      },
-		      "theme": "classic"
-		    })});
-		</script>
-		<!-- End of cookie consent plugin -->
-
 	</body>
 
 </html>

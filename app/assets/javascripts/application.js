@@ -16,5 +16,10 @@
 //= require dataTables/jquery.dataTables
 //= require bootstrap
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require cookies_eu
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+    $('.classifieds-table').DataTable();
+  });

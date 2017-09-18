@@ -24,6 +24,7 @@ gem 'select2-rails'
 gem 'sidekiq'
 gem 'devise-bootstrap-views'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'cookies_eu'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
