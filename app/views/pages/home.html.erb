@@ -7,7 +7,7 @@
         <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
         <br>
 
-        <div class="form-group station-search">
+        <div class="station-search">
             <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
               <%= select_tag(:ville, options_for_select(list_station), multiple: false, class:'select-resort') %>
               <%= submit_tag 'tester', class: "ok-btn btn btn-primary" %> 
