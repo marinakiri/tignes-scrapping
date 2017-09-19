@@ -12,25 +12,22 @@
   <div class="row">
     <div class="col-md-offset-1 col-md-10">
       <% @subscriptions.each do |s| %>
-      <div class="col-md-3">
-        
-          <div class="station-bloc col xs-11">
-            <div class='col-md-offset-10'>
-              <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
-                <i class='fa fa-times'></i>
-              <% end %>
+        <div class="col-md-3">        
+          <%= link_to dashboard_path(anchor: s.resort.ville) do %>
+            <div class="station-bloc col xs-11">
+              <div class='col-md-offset-10'>
+                <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                  <i class='fa fa-times'></i>
+                <% end %>
+              </div>
+                <h2> <%= s.resort.ville.titleize%> </h2>
+              <div>
+                <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
+              </div>
             </div>
-            <%= link_to dashboard_path(anchor: s.resort.ville) do %>
-              <h2> <%= s.resort.ville.capitalize%> </h2>
-            <% end %>
-            <div>
-              <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
-            </div>
-          </div>
-        
-      </div>
-    <% end %>
-
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -75,8 +72,8 @@
     <div class="search-results-dashboard col-md-offset-2 col-md-8">
     <% selected_classifieds = @classifieds.where(resort_id:s.resort_id) %>
       <div class="search-results-header">
-        <h3><%= s.resort.ville.capitalize %></h3>
-        <h4> <%= selected_classifieds.count %> annonces</h4>
+        <h3><%= s.resort.ville.titleize %></h3>
+        <h4><%= selected_classifieds.count %> annonces</h4>
       </div>
   
   <!-- Afficher le nombre de guests dans un formulaire -->

@@ -16,13 +16,6 @@
 
 .station-bloc
 {
-/*  text-align: center;
-  background-color: lightblue;
-  border: 1px solid black;
-  border-radius: 3px;
-  line-height: 40px;
-  text-align: center;*/
-
   text-align: center;
   height: 80px;
   margin-top: 5px;
@@ -40,22 +33,18 @@
     }
 
   a {
-      color:lightgrey;
-    }
-
-  a:hover {
-      text-decoration: none;
-      color:black;
-      font-weight: bold;
-    }
+    color: darkgrey;
+  }
 }
 
 .station-bloc:hover
 {
-  /*box-shadow: -5 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);*/
-  /*-webkit-transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: lightgrey;
+  background: rgba(246,249,252,.9);
+  transform: translateY(-5px) translateZ(0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  translateY(-5px) translateZ(0) */
+  box-shadow: -5 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
   cursor:pointer;
 }
 
