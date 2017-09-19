@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to:'users#dashboard'
 
+  get '/users', to: 'pages#home'
+
   resources :subscriptions, only: [:destroy]
 
   # authenticate :user, lambda { |bu| bu.super_admin? } do
