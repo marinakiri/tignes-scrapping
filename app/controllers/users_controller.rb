@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     #Inscription
     s = Subscription.new
     s.user = current_user
-    s.resort = Resort.find_by_ville(params["ville"])
+    if params["ville"]
+      s.resort = Resort.find_by_ville(params["ville"].downcase)
+    end
     if s.resort
       @current_ville_id = s.resort.id
     end
