@@ -9,7 +9,7 @@ module ApplicationHelper
     villes.each do |i|
       if Resort.find_by_ville(I18n.transliterate(i))
          if Classified.where("ville":"#{i}").count > 10 && (regions.include? Resort.find_by_ville(I18n.transliterate(i)).region_number)
-           list_of_station.push(i.titleize)
+           list_of_station.push(titleize(i))
         end
       end
     end
@@ -22,11 +22,25 @@ module ApplicationHelper
       return Classified.where(ville:@search.ville).group("number_of_guests").count.keys
   end
 
-  private
+  def titleize(title)
+    new_title = ""
 
-  def titleize(x)
-    x = x.split.each { |s| s.capitalize! } # transforme le titre en array, puis capitalise chaque élément sauf les petits mots
-    x = x * " "
+    title.split.each do |word|
+      if new_title == ""
+        new_title << word.capitalize
+      elsif ["les", "le", "de"].include? word
+        new_title << " "
+        new_title << word
+      elsif ["d'isere"].include? word
+        new_title << " "
+        new_title << "d'Isère"
+      else  
+        new_title << " "
+        new_title << word.capitalize
+      end
+    end
+
+    return new_title
   end
 
 
