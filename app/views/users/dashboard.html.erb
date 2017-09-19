@@ -20,9 +20,9 @@
                   <i class='fa fa-times'></i>
                 <% end %>
               </div>
-                <h2> <%= s.resort.ville.titleize%> </h2>
+                <h2> <%= titleize(s.resort.ville)%> </h2>
               <div>
-                <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
+                <%= @classifieds_hash[Resort.find(s.resort_id).ville].count %> annonces
               </div>
             </div>
           <% end %>
@@ -51,6 +51,8 @@
 </div>
 </div>
 
+
+
   <!-- Initialization for calendar -->
   <% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
   <% starting_date = Date.new(2017,12,9) %>
@@ -70,9 +72,9 @@
 
 <div class="row" id="<%=s.resort.ville_url%>">
     <div class="search-results-dashboard col-md-offset-2 col-md-8">
-    <% selected_classifieds = @classifieds.where(resort_id:s.resort_id) %>
+    <% selected_classifieds = @classifieds_hash[Resort.find(s.resort_id).ville] %>
       <div class="search-results-header">
-        <h3><%= s.resort.ville.titleize %></h3>
+        <h3><%= titleize(s.resort.ville) %></h3>
         <h4><%= selected_classifieds.count %> annonces</h4>
       </div>
   

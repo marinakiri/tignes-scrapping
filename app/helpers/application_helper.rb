@@ -33,7 +33,7 @@ module ApplicationHelper
         new_title << word
       elsif ["d'isere"].include? word
         new_title << " "
-        new_title << "d'Isère"
+        new_title << "d'Isere"
       else  
         new_title << " "
         new_title << word.capitalize
