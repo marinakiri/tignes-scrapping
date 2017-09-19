@@ -33,20 +33,14 @@
     }
 
   a {
-      color:lightgrey;
-    }
-
-  a:hover {
-      text-decoration: none;
-      color:black;
-      font-weight: bold;
-    }
+    color: darkgrey;
+  }
 }
 
 .station-bloc:hover
 {
-  color: #1D0826;
   text-decoration: none;
+  color: lightgrey;
   background: rgba(246,249,252,.9);
   transform: translateY(-5px) translateZ(0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;

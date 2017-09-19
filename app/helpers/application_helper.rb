@@ -9,7 +9,7 @@ module ApplicationHelper
     villes.each do |i|
       if Resort.find_by_ville(I18n.transliterate(i))
          if Classified.where("ville":"#{i}").count > 10 && (regions.include? Resort.find_by_ville(I18n.transliterate(i)).region_number)
-           list_of_station.push(i.titleize)
+           list_of_station.push(i)
         end
       end
     end
