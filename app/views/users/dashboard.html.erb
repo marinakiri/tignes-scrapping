@@ -21,7 +21,7 @@
               <% end %>
             </div>
             <%= link_to dashboard_path(anchor: s.resort.ville) do %>
-              <h2> <%= s.resort.ville.capitalize%> </h2>
+              <h2> <%= s.resort.ville.titleize%> </h2>
             <% end %>
             <div>
               <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
@@ -75,7 +75,7 @@
     <div class="search-results-dashboard col-md-offset-2 col-md-8">
     <% selected_classifieds = @classifieds.where(resort_id:s.resort_id) %>
       <div class="search-results-header">
-        <h3><%= s.resort.ville.capitalize %></h3>
+        <h3><%= s.resort.ville.titleize %></h3>
         <h4> <%= selected_classifieds.count %> annonces</h4>
       </div>
   
