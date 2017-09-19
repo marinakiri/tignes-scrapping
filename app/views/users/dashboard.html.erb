@@ -1,11 +1,12 @@
 <div class="container-fluid" id="list-of-resorts">
 <div class="row">
   <div class="search-results col-md-offset-2 col-md-8 margin-top-extra">
-
-  <h1>Bienvenue sur votre tableau de bord</h1>
+  <br>
+  <h1><b>Bienvenue sur votre tableau de bord !</b></h1>
+  <br>
 
   <% if @subscriptions == nil || @subscriptions.count == 0 %>
-    <div class="row not-subscribed"><p>Ajoutez une station à analyser avec le champs de recherche ci-dessous.</p></div>
+    <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
   <% end %>
 
   <div class="row">
@@ -14,11 +15,16 @@
       <div class="col-md-3">
         
           <div class="station-bloc col xs-11">
-            <div class='col-md-offset-10' ><%= link_to "x", "/subscriptions/#{s.id}", method: :delete %> </div>
-           <%= link_to dashboard_path(anchor: s.resort.ville) do %>
-            <h2> <%= s.resort.ville.capitalize%> </h2>
+            <div class='col-md-offset-10'>
+              <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                <i class='fa fa-times'></i>
+              <% end %>
+            </div>
+            <%= link_to dashboard_path(anchor: s.resort.ville) do %>
+              <h2> <%= s.resort.ville.capitalize%> </h2>
             <% end %>
-            <div><%= @classifieds.where(resort_id:s.resort_id).count %> annonces
+            <div>
+              <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
             </div>
           </div>
         
@@ -74,10 +80,6 @@
         <h3><%= s.resort.ville.capitalize %></h3>
         <h4> <%= selected_classifieds.count %> annonces</h4>
       </div>
-
-  <%= link_to dashboard_path(anchor: "list-of-resorts") do %>
-    <div class="col-md-offset-8 col-md-4 return-top">Revenir au tableau de bord</div>
-  <% end %>
   
   <!-- Afficher le nombre de guests dans un formulaire -->
    <!-- To be prompted for number_of_guests -->
@@ -144,7 +146,7 @@
 
 <div class="row">
 <div class="col-md-offset-1 col-md-10">
-<h3>Table détaillée des résultats</h3>
+<h3>Tableau des annonces</h3>
   <table class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -152,17 +154,17 @@
         <th><i class="fa fa-user" aria-hidden="true"></i></th>
         <th>Prix</th>
         <th>Nom de l'annonce</th>
-        <th>Code annonce</th>
+        <!-- <th>Code annonce</th> -->
       </tr>
     </thead>
     <tbody>
     <% selected_classifieds.each do |sc| %>
       <tr>
-        <td><%= sc.start_date.mday%>-<%= sc.start_date.mon%>-<%=sc.start_date.year %></td>
+        <td><%= sc.start_date.mday%>/<%= sc.start_date.mon%>/<%=sc.start_date.year %></td>
         <td><%= sc.number_of_guests %></td>
         <td><%= (sc.price*7).round %>€</td>
-        <td><a href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
-        <td><%= sc.abritel_classified_id%></td>
+        <td><a target="_blank" href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
+        <!-- <td><%= sc.abritel_classified_id%></td> -->
       </tr>
     <% end %>
     </tbody>
@@ -172,8 +174,15 @@
 
   <!-- End of the table of data -->
 
-
 </div>
+
+<div class="col-md-offset-4 col-md-4">
+  <a class="scroll-top dynamic-btn" href='#top'>
+    Revenir au tableau de bord
+    <i class="fa fa-chevron-circle-up" aria-hidden=true></i>
+  </a>    
+</div>
+
 </div>
 
   
