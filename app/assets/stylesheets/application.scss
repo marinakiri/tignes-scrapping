@@ -26,6 +26,106 @@ html, body {
 	background-color: #F5EEEE;   
 }
 
+@media all and (max-width: 1280px) and (orientation:portrait)
+{
+  body
+  {
+    font-size: 4em;
+    .slideshow
+    {
+    	font-size: 0.5em;
+    	height: 600px;
+    }
+    form
+    {
+    	font-size:1em;
+    }
+    header
+    {
+    	font-size: 0.7em;
+    	.logo
+    	{
+    		height: 50px;
+    		width: 50px;
+    		margin-top:10px;
+    	}
+    }
+    .bienvenue
+    {
+    	display: none;
+    }
+    .slideshow-text
+    {
+    	padding-top: 150px;
+    }
+    .containing-pluses
+    {
+    	h3
+    	{
+    		font-size: 1.5em;
+    	}
+    }
+    .view-demo
+    {
+    	font-size:1em;
+    }
+
+   footer
+   {
+   	font-size:0.5em;
+   }
+
+   .station-bloc
+   {
+   		height: 200px;
+   }
+
+	.search-results-header
+	{
+		h3
+		{
+			font-size: 1.2em;	
+		}
+		h4
+		{
+			font-size: 0.8em;		
+		}
+		
+	}
+	.mini-date
+	{
+   flex-direction: row;
+   height:80px;
+   line-height: 10px;
+   /*.bold
+   {
+   	margin-bottom:0px;
+   	padding-bottom: 0px;
+   	font-size:0.8em;
+   }*/
+   p
+   {
+   	/*display: table-cell;
+    vertical-align: middle;*/
+    padding-top:30px;
+   }
+	}
+	.price
+	{
+		p
+		{
+			padding-top:30px;	
+		}
+	}
+
+	table
+	{
+		font-size: 0.25em;
+	}
+
+  }
+}
+
 body
 {
 	margin-top: 0;

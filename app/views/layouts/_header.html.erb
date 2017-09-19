@@ -4,14 +4,14 @@
             <a class="navbar-logo" href="/">
                 <img class="logo" src="/assets/logo-big.png" alt="" height="28" width="28">
             </a>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-text navbar-left" href="/">
                 Algoski
             </a>
             
             <div class="navbar-text navbar-right">
                 <% if user_signed_in? %>
                     <ul class="navbar-nav">
-                        <li>Bienvenue <strong><%= current_user.email %></strong> !</li>
+                        <li class="bienvenue">Bienvenue <strong><%= current_user.email %></strong> !</li>
                         <li><%= link_to "Mon dashboard", dashboard_path, :class => 'navbar-link' %></li>
                         <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link-custom'  %></li>
                     </ul>
