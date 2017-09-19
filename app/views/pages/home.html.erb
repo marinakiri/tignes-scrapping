@@ -8,9 +8,9 @@
         <br>
 
         <div class="station-search">
-            <%= form_tag({controller: "users", action: "dashboard"}, method: :get ) do %>
+            <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
               <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'select-resort') %>
-              <%= submit_tag 'tester', class: "ok-btn btn btn-primary" %> 
+              <%= submit_tag 'Go !', class: "ok-btn btn btn-primary" %> 
             <% end %>          
             <!-- ok-btn btn btn-primary -->
         </div>
@@ -23,21 +23,21 @@
     <div class="col-md-offset-1 col-md-10">
       <h2>Mise en location</h2>
       <p><i class="fa fa-question icon-big" aria-hidden="true"></i></p>
-      <p>A quel prix dois-je mettre l'appartement pour le louer ?</p>
+      <p>Quel prix dois-je fixer pour louer mon appartement ?</p>
     </div>
   </div>
   <div class="col-md-offset-1 col-md-2 search-results homepage">
     <div class="col-md-offset-1 col-md-10">
       <h2>Pendant la saison</h2>
       <p><i class="fa fa-calendar-plus-o icon-big" aria-hidden="true"></i></p>
-      <p>Je n'ai pas encore loué, suis-je trop cher ? Est-ce que c'est normal?</p>
+      <p>Je n'ai pas encore loué, suis-je trop cher ? Est-ce normal ?</p>
     </div>
   </div>
   <div class="col-md-offset-1 col-md-2 search-results homepage">
     <div class="col-md-offset-1 col-md-10">
       <h2>Après la location</h2>
       <p><i class="fa fa-star icon-big" aria-hidden="true"></i></p>
-      <p>Puis-je faire mieux l'année prochaine ? Comment?</p>
+      <p>Puis-je faire mieux l'année prochaine ? Comment ?</p>
     </div>
   </div>
 </div>
@@ -46,7 +46,7 @@
       <div class="slideshow-smaller">
         <div class="col-md-offset-7 col-md-4 containing-pluses">
         <div class="box-in-box">
-          <h3><i class="fa fa-plus" aria-hidden="true"></i> Louer plus cher</h3>
+          <h3><i class="fa fa-plus" aria-hidden="true"></i> Louer au meilleur prix</h3>
           <h3><i class="fa fa-plus" aria-hidden="true"></i> Louer plus souvent</h3>
         </div>
         </div>
@@ -57,13 +57,13 @@
     <div class="col-md-offset-3 col-md-6 search-results col-xs-offset-1 col-xs-10 homepage">
       <h2><%=@classifieds.count%> annonces</h2>
       <div class="col-md-offset-1 col-md-10 col-xs-offset-1 col-xs-10">
-      <p>Dans notre base de données</p>
+      <p>référencées dans notre base de données</p>
       <p>pour comparer vos prix avec la concurrence</p>
-      <p>à disposition pour vous, gratuitement!</p>
+      <p>à disposition pour vous, gratuitement !</p>
       <p>(pour l'instant)</p>
       <a class="dynamic-btn" href="dashboard">
           Tester
-          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
       </a>
       </div>
     </div>
