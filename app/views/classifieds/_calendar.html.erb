@@ -14,12 +14,12 @@
         <% current_date = starting_date + (i+j*4)*7 %>
         <div class="date">
           <div class="mini-date start-date">
-            <p>Sa</p>
-            <p><span class="bold"><%= "#{current_date.mday}" %></span></p>
+            <div>Sa</div>
+            <div class="bold"><%= "#{current_date.mday}" %></div>
           </div>
           <div class="mini-date end-date">
-            <p>Sa</p>
-            <p><span class="bold"><%= "#{(current_date+7).mday}" %></span></p>
+            <div>Sa</div>
+            <div class="bold"><%= "#{(current_date+7).mday}" %></div>
           </div>
         </div>
         <div class="price">

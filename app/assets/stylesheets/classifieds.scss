@@ -120,15 +120,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  vertical-align: middle;
 }
 
 .start-date
 {
   background-color: rgb(235,213,191);
+  vertical-align: middle;
 }
 .end-date
 {
   background-color: rgb(215,201,208);
+  vertical-align: middle;
 }
 
 .bold
