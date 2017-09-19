@@ -6,7 +6,9 @@
         </div> 
         <div class="form-body">
           <div class="row">
-            <div class="form-body-title col-md-offset-1 col-md-10 text-center">Vous devez vous connecter pour accéder à cette fonctionnalité
+            <div class="form-body-title col-md-offset-1 col-md-10 text-center">
+              <h1>Bonjour !</h1>
+              <p>Renseignez vos identifiants afin d'accéder à votre tableau de bord :</p>
             </div>
             <div class="form-body-info col-md-offset-1 col-md-10">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
