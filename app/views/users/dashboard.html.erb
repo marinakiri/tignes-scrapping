@@ -1,11 +1,12 @@
 <div class="container-fluid" id="list-of-resorts">
 <div class="row">
   <div class="search-results col-md-offset-2 col-md-8 margin-top-extra">
-
-  <h1>Bienvenue sur votre tableau de bord</h1>
+  <br>
+  <h1><b>Bienvenue sur votre tableau de bord !</b></h1>
+  <br>
 
   <% if @subscriptions == nil || @subscriptions.count == 0 %>
-    <div class="row not-subscribed"><p>Ajoutez une station à analyser avec le champs de recherche ci-dessous.</p></div>
+    <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
   <% end %>
 
   <div class="row">
@@ -14,11 +15,16 @@
       <div class="col-md-3">
         
           <div class="station-bloc col xs-11">
-            <div class='col-md-offset-10' ><%= link_to "x", "/subscriptions/#{s.id}", method: :delete %> </div>
-           <%= link_to dashboard_path(anchor: s.resort.ville) do %>
-            <h2> <%= s.resort.ville.capitalize%> </h2>
+            <div class='col-md-offset-10'>
+              <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                <i class='fa fa-times'></i>
+              <% end %>
+            </div>
+            <%= link_to dashboard_path(anchor: s.resort.ville) do %>
+              <h2> <%= s.resort.ville.capitalize%> </h2>
             <% end %>
-            <div><%= @classifieds.where(resort_id:s.resort_id).count %> annonces
+            <div>
+              <%= @classifieds.where(resort_id:s.resort_id).count %> annonces
             </div>
           </div>
         
