@@ -54,8 +54,6 @@
 </div>
 </div>
 
-  <hr>
-
   <!-- Initialization for calendar -->
   <% month_list = ["décembre", "janvier", "février", "mars", "avril", "mai"] %>
   <% starting_date = Date.new(2017,12,9) %>
@@ -145,34 +143,36 @@
 <!-- The table of data -->
 
 <div class="row">
-<div class="col-md-offset-1 col-md-10">
-<h3>Tableau des annonces</h3>
-  <table class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-      <tr>
-        <th>Semaine</th>
-        <th><i class="fa fa-user" aria-hidden="true"></i></th>
-        <th>Prix</th>
-        <th>Nom de l'annonce</th>
-        <!-- <th>Code annonce</th> -->
-      </tr>
-    </thead>
-    <tbody>
-    <% selected_classifieds.each do |sc| %>
-      <tr>
-        <td><%= sc.start_date.mday%>/<%= sc.start_date.mon%>/<%=sc.start_date.year %></td>
-        <td><%= sc.number_of_guests %></td>
-        <td><%= (sc.price*7).round %>€</td>
-        <td><a target="_blank" href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
-        <!-- <td><%= sc.abritel_classified_id%></td> -->
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+  <div class="col-md-offset-1 col-md-10">
+    <br>
+    <hr>
+    <h3>Liste des annonces</h3>
+    <table class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Semaine</th>
+          <th><i class="fa fa-user" aria-hidden="true"></i></th>
+          <th>Prix</th>
+          <th>Nom de l'annonce</th>
+          <!-- <th>Code annonce</th> -->
+        </tr>
+      </thead>
+      <tbody>
+      <% selected_classifieds.each do |sc| %>
+        <tr>
+          <td><%= sc.start_date.mday%>/<%= sc.start_date.mon%>/<%=sc.start_date.year %></td>
+          <td><%= sc.number_of_guests %></td>
+          <td><%= (sc.price*7).round %>€</td>
+          <td><a target="_blank" href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
+          <!-- <td><%= sc.abritel_classified_id%></td> -->
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-  <!-- End of the table of data -->
+<!-- End of the table of data -->
 
 </div>
 
@@ -187,7 +187,6 @@
 
   
 
-    <hr>
   <%end%>
 
   <% end %>
