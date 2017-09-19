@@ -21,8 +21,12 @@
 //= require_tree .
 
 $(document).ready(function() {
-    $('.classifieds-table').DataTable();
-  });
+    $('.classifieds-table').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+        }
+    } );
+} );
 
 
 // $(document).ready(function() { $('#ville').select2(); });
