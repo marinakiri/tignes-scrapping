@@ -27,6 +27,8 @@ $(document).ready(function() {
     	    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
     	},
 
+        "pagingType": "full",
+
         initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;
