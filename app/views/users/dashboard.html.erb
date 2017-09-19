@@ -90,7 +90,7 @@
           <div class="form-group">
             <%= form_tag({controller: "users", action: "dashboard"}, method: :get) do %>
               <%= label_tag(:number_of_guests, "Nombre de personnes dans l'appartement :") %>
-              <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests2))%>
+              <%= select_tag(:number_of_guests, options_for_select(list_of_number_of_guests2), prompt:number_of_guests)%>
               <%= submit_tag 'OK', class: "btn btn-primary" %>
             <% end %>
           </div>

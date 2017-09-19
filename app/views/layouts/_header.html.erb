@@ -12,8 +12,10 @@
                 <% if user_signed_in? %>
                     <ul class="navbar-nav">
                         <li class="bienvenue">Bienvenue <strong><%= current_user.email %></strong> !</li>
-                        <li><%= link_to "Mon dashboard", dashboard_path, :class => 'navbar-link' %></li>
-                        <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link-custom'  %></li>
+                        <li><%= link_to "Mon tableau de bord", dashboard_path, :class => 'navbar-link' %></li>
+                        <li><%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link-custom' do %>
+                        <i class="fa fa-sign-out " aria-hidden="true"></i> 
+                        <% end %></li>
                     </ul>
                 <% else %>
                     <ul class="navbar-nav">
