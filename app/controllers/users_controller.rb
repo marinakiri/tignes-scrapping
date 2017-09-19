@@ -19,7 +19,10 @@ class UsersController < ApplicationController
       flash.now[:alert] = "Vous êtes déjà abonné(e) à cette station!"  
     end
 
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.where(user_id:current_user.id)
+    # @subscriptions.each do |s|
+    #   @classifieds = Classified.where(resort_id:s.resort_id)
+    # end
     @classifieds = Classified.all
     @averages = Classified.group("ville").group("start_date").group("number_of_guests").average("price")
     @number_of_guests = params[:number_of_guests]
