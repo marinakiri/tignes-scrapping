@@ -7,12 +7,16 @@
       </div>
         
         <div class="row">
-          <div class="form-group station-search">
-              <%= form_tag({controller: "users", action: "dashboard"}, method: :get ) do %>
-                <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'select-resort') %>
-                <%= submit_tag 'Go !', class: "btn btn-primary" %> 
+          
+          <%= form_tag({controller: "users", action: "dashboard"}, method: :get, class:"form-inline" ) do %>
+            <div class="input-group col-md-offset-4 col-md-4 col-xs-offset-1 col-xs-10">
+                <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'form-control select-resort') %>
+                <span class="input-group-btn">
+                  <%= submit_tag 'Go !', class: "btn btn-primary" %>
+                </span>
               <% end %>          
           </div>
+          
         </div>
 
     </div>
