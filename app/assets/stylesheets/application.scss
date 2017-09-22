@@ -34,14 +34,18 @@ html, body {
     .slideshow
     {
     	height: 500px;
+      h1
+      {
+        font-size: 2em;
+      }
+      h2
+      {
+        font-size: 1.5em;
+      }
     }
     .bienvenue
     {
     	display: none;
-    }
-    .slideshow-text
-    {
-    	padding-top: 100px;
     }
     .box-in-box
     {

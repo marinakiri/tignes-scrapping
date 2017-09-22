@@ -1,20 +1,20 @@
 <div class="container-fluid">
   <div class="row">
     <div class="slideshow"> 
-      <div class="slideshow-text col-md-offset-1 col-md-10">
-        
+      <div class="col-xs-offset-1 col-xs-10">
         <h1 class="slideshow-h1">Vous louez un bien à la montagne ?</h1>
         <h2 class="slideshow-h2">Visualisez les prix de tous vos concurrents sur la saison</h2>
-        <br>
-
-        <div class="station-search">
-            <%= form_tag({controller: "users", action: "dashboard"}, method: :get ) do %>
-              <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'select-resort') %>
-              <%= submit_tag 'Go !', class: "ok-btn btn btn-primary" %> 
-            <% end %>          
-            <!-- ok-btn btn btn-primary -->
-        </div>
       </div>
+        
+        <div class="row">
+          <div class="form-group station-search">
+              <%= form_tag({controller: "users", action: "dashboard"}, method: :get ) do %>
+                <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'select-resort') %>
+                <%= submit_tag 'Go !', class: "btn btn-primary" %> 
+              <% end %>          
+          </div>
+        </div>
+
     </div>
   </div>
 

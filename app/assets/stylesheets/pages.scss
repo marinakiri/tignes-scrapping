@@ -9,14 +9,9 @@
   background-position: center; 
   background-repeat: no-repeat;
   background-image: url('/assets/bgd-xl.jpg');
-}
-
-.slideshow-text
-{
-  position:relative;
-  height: 200px;
-  padding-top:200px;
-  margin-bottom:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .slideshow-h1
