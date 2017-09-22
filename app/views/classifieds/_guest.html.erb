@@ -1,7 +1,0 @@
-<div class="form-group">
-    <%=form_tag({controller: "classifieds", action: "search"}, method: :get) do %>
-      <%= label_tag(:number_of_guests, "Nombre de place dans l'appartement") %>
-      <%= select_tag(:number_of_guests, options_for_select((1..12).to_a))%>
-      <%= submit_tag 'trouvez les prix moyen', class: "btn btn-primary" %>
-    <% end %> 
-</div>

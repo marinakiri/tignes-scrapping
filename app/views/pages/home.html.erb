@@ -8,7 +8,7 @@
         <br>
 
         <div class="station-search">
-            <%= form_tag({controller: "classifieds", action: "search"}, method: :get ) do %>
+            <%= form_tag({controller: "users", action: "dashboard"}, method: :get ) do %>
               <%= select_tag(:ville_searched, options_for_select(list_station), multiple: false, class:'select-resort') %>
               <%= submit_tag 'Go !', class: "ok-btn btn btn-primary" %> 
             <% end %>          
