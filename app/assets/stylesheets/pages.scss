@@ -76,10 +76,17 @@
   background-image: url('/assets/riciardus-196022.jpg');
   background-size:100%;
 }
-.containing-pluses
+
+.box-in-box
 {
-  margin-top:55px;
+  height:200px;
   margin-bottom: auto;
+  margin-top:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
   h3
   {
     font-weight: bold;
@@ -87,12 +94,6 @@
     text-shadow: 0px 2px 2px grey;
     font-size:2em;
   }
-}
-
-.box-in-box
-{
-  height:80px;
-  margin-bottom: auto;
   em
   {
     font-style: none;
