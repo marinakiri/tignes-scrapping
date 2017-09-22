@@ -23,26 +23,27 @@ $a-tags-hover: 'a:active, a:hover';
 
 html, body {
 	height: 100%;
-	background-color: #F5EEEE;   
+	background-color: #F5EEEE;
+  font-size: 1em;   
 }
 
 @media all and (max-width: 1280px) and (orientation:portrait)
 {
   body
   {
-    font-size: 4em;
+    /*font-size: 1em;*/
     .slideshow
     {
-    	font-size: 0.5em;
+    	/*font-size: 0.5em;*/
     	height: 600px;
     }
     form
     {
-    	font-size:1em;
+    	/*font-size:1em;*/
     }
     header
     {
-    	font-size: 0.7em;
+    	font-size: 1.2em;
     	.logo
     	{
     		height: 50px;
@@ -56,39 +57,39 @@ html, body {
     }
     .slideshow-text
     {
-    	padding-top: 150px;
+    	/*padding-top: 150px;*/
     }
     .containing-pluses
     {
     	h3
     	{
-    		font-size: 1.5em;
+    		/*font-size: 1.5em;*/
     	}
     }
     .view-demo
     {
-    	font-size:1em;
+    	/*font-size:1em;*/
     }
 
    footer
    {
-   	font-size:0.5em;
+   	/*font-size:0.5em;*/
    }
 
    .station-bloc
    {
-   		height: 200px;
+   		/*height: 200px;*/
    }
 
 	.search-results-header
 	{
 		h3
 		{
-			font-size: 1.2em;	
+			/*font-size: 1.2em;	*/
 		}
 		h4
 		{
-			font-size: 0.8em;		
+			/*font-size: 0.8em;		*/
 		}
 		
 	}
@@ -255,7 +256,7 @@ header {
 	border-radius: 4px;
 	background: rgba(246,249,252,.8);
 	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
-	font-size: 18px;
+	font-size: 1.3em;
 	color: #AC4D78;
 	text-decoration: none;
 
