@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
   attr_accessor :current_ville_id
 
   def dashboard
