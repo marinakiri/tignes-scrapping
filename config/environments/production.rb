@@ -99,13 +99,13 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = 
   {
-    address: "smtp.gmail.com",
+    address: ENV['OVH_DOMAIN'],
     port: 587,
-    domain: ENV["GMAIL_DOMAIN"],
+    domain: ENV["OVH_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["OVH_USERNAME"],
+    password: ENV["OVH_PASSWORD"]
   }
 
 end
