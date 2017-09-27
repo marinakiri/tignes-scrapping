@@ -10,6 +10,7 @@
               <h1>Bonjour !</h1>
               <p>Renseignez vos identifiants afin d'accéder à votre tableau de bord :</p>
             </div>
+
             <div class="form-body-info col-md-offset-1 col-md-10">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
               <div class="form-group col-md-offset-2 col-md-8"><%= f.email_field :email, autofocus:true, class: 'form-control', placeholder: 'Email'  %>
@@ -28,6 +29,7 @@
               <div class="form-group col-md-offset-2 col-md-8 text-center"><%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-form' %>
               </div>
              </div>
+
              <%end%>
           </div>
         </div>
