@@ -17,6 +17,11 @@
               </div>
               <div class="form-group col-md-offset-2 col-md-8"><%= f.password_field :password, class: 'form-control', placeholder: 'Mot de passe' %>
               </div>
+              <div class="form-group col-md-offset-2 col-md-8 text-right">
+              <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                <%= link_to t('.forgot_your_password', default: 'Mot de passe oublié?'), new_password_path(resource_name) %><br />
+              <% end %>
+              </div>
               <div class="btn form-group col-md-offset-2">
                 <% if devise_mapping.rememberable? %>
                   <div class="checkbox">
