@@ -26,6 +26,7 @@ gem 'devise-bootstrap-views'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'cookies_eu'
 gem 'font-awesome-sass'
+gem 'figaro'
 
 
 group :development, :test do
