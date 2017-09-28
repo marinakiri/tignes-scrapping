@@ -1,28 +1,33 @@
 <header>
-    <nav class="navbar-custom navbar-fixed-top navbar">
-        <div class="container">
-            <a class="navbar-logo" href="/">
-                <img class="logo" src="/assets/logo-big.png" alt="" height="28" width="28">
-            </a>
-            <a class="no-margin-left navbar-text navbar-left" href="/">
-                Algoski
-            </a>
-            
-            <div class="navbar-text navbar-right">
-                <% if user_signed_in? %>
-                    <ul class="navbar-nav">
-                        <li class="bienvenue">Bienvenue <strong><%= link_to "#{current_user.email}", edit_user_registration_path %></strong> !</li>
-                        <li><%= link_to "Mon tableau de bord", dashboard_path, :class => 'navbar-link' %></li>
-                        <li><%= link_to destroy_user_session_path, method: :delete, :class => 'navbar-link-custom' do %>
-                        <i class="fa fa-sign-out " aria-hidden="true"></i> 
-                        <% end %></li>
-                    </ul>
-                <% else %>
-                    <ul class="navbar-nav">
-                        <li><%= link_to "Se connecter", new_user_session_path, :class => 'navbar-link-custom' %></li>
-                    </ul>
-                <% end %>
-            </div>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container" >
+
+      <!-- logo -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Algoski</a>
         </div>
-    </nav>
+
+    <!-- Menu items -->
+      <div class="collapse navbar-collapse" id="mainNavBar">
+        <ul class="nav navbar-nav navbar-right dropdown-toggle">
+            <% if user_signed_in? %>
+                <li><%= link_to "Mon tableau de bord", dashboard_path, class:"dropdown-toggle" %></li>
+                <li><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
+                <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                <li><%= link_to "Se connecter", new_user_session_path %></li>
+            <% end %>
+        </ul>
+      </div>
+           
+      </div> 
+    </div>
+    
 </header>
+

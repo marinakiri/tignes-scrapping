@@ -16,7 +16,7 @@
 	<body>
 		<%= render 'layouts/header' %>
 
-		<div id="main">
+		
 			<% if notice %>
 			<p class="alert alert-success"><%= notice %></p>
 			<% end %>
@@ -26,7 +26,7 @@
 
 			<%= yield %>
 			<%= render 'layouts/footer' %>
-		</div>
+		
 		
 		
 		<%= render 'cookies_eu/consent_banner' %>
