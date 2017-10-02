@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927170459) do
+ActiveRecord::Schema.define(version: 20171002093907) do
+
+  create_table "averages", force: :cascade do |t|
+    t.date "start_date"
+    t.float "average_value"
+    t.integer "average_count"
+    t.integer "resort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resort_id"], name: "index_averages_on_resort_id"
+    t.index ["start_date"], name: "index_averages_on_start_date"
+  end
 
 # Could not dump table "classifieds" because of following StandardError
 #   Unknown type 'jsonb' for column 'json_data'
