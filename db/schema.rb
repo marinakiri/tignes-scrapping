@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171002093907) do
     t.date "start_date"
     t.float "average_value"
     t.integer "average_count"
+    t.integer "number_of_guests"
     t.integer "resort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
