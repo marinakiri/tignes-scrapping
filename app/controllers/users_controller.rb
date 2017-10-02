@@ -28,7 +28,6 @@ class UsersController < ApplicationController
       @classifieds_hash[Resort.find(s.resort_id).ville] = Classified.where(resort_id:s.resort_id)
     end
     
-    @averages = Classified.group("ville").group("start_date").group("number_of_guests").average("price")
     #Do nos calculate average anymore, just load it from Average model :)
     @averages = Average.all
     @number_of_guests = params[:number_of_guests]

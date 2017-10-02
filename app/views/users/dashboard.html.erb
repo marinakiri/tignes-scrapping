@@ -128,10 +128,10 @@
                 </div>
               </div>
               <div class="price">
-                <% if @averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]] != nil %>
-                  <%= (@averages[[s.resort.ville,start_date=current_date,number_of_guests.to_i]]*(frequency)).round %>
+              <% if @averages.where(resort:s.resort).where(start_date:current_date).find_by_number_of_guests(number_of_guests) != nil %>  
+                <%= (@averages.where(resort:s.resort).where(start_date:current_date).find_by_number_of_guests(number_of_guests).average_value*(frequency)).round %>
                  €
-                <p>7 jours</p>
+                <p><%= @averages.where(resort:s.resort).where(start_date:current_date).find_by_number_of_guests(number_of_guests).average_count %> annonces</p>
               <% else %>
                 -
               <% end %>
