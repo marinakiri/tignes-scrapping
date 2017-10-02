@@ -21,24 +21,32 @@ $a-tags-hover: 'a:active, a:hover';
 	list-style: none;
 }
 
-html, body {
-	/*height: 100%;*/
-	background-color: #F5EEEE;
+html
+{
+  height: 100%;
+	
   font-size: 14px;   
 }
 
 body
 {
-  margin-bottom: 20px;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  background-color: #F5EEEE;
 }
 
 
 .footer
 {
-  position: relative;
+  position: absolute;
+  right: 0;
   bottom: 0;
+  left: 0;
+  padding: 1rem;
   width: 100%;
-  height: 20px;
+  /*height: 20px;*/
   background-color: black;
 }
 
